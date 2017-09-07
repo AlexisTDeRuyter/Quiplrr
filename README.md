@@ -1,24 +1,8 @@
-# README
+Creative Team: Achilles
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Members:  Alexis DeRuyter   --  @alexistderuyter
+          Emmet Mahdavi     --  @emmetreza
+          Younghoon Kwon    --  @younghoonkwon
 
-Things you may want to cover:
+This app is broken into two parts, the backend which generates text in the style of a given author, and the frontend which contacts the rails api and displays the text to the user.
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
