@@ -49,3 +49,7 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'marky_markov'
+
+gem 'pry-rails'
+
+gem 'slim-rails'
