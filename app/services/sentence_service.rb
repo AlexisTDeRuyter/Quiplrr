@@ -1,9 +1,9 @@
 class SentenceService
-  def initialize(params)
-    @generator = MarkyMarkov::Dictionary.new(Rails.root.join('app', 'data', 'dictionaries', params[:person]), 3)
-  end
+  SHAKESPEARE = MarkyMarkov::Dictionary.new(Rails.root.join('app', 'data', 'dictionaries', 'shakespeare'), 2)
 
-  def generate_sentence(n = 1)
-    @generator.generate_n_sentences(n)
+  def generate_sentence(person, n = 1)
+    case person
+    when 'shakespeare' then SHAKESPEARE.generate_n_sentences(n)
+    end
   end
 end

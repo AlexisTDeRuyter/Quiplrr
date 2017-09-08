@@ -7,8 +7,8 @@ class QuiplrController < ApplicationController
   end
 
   def show
-    quiplr = SentenceService.new({person: 'shakespeare' }) #'app', 'data', 'dictionaries', params[:person]), 3)
-    sentence = quiplr.generate_sentence
+    quiplr = SentenceService.new #'app', 'data', 'dictionaries', params[:person]), 3)
+    sentence = quiplr.generate_sentence('shakespeare')
     respond_to do |format|
       format.html { render json: sentence.to_json }
       format.js { render json: sentence.to_json }
