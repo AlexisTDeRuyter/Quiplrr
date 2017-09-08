@@ -2,13 +2,14 @@ doctype html
 html
   head
     meta content=("text/html; charset=UTF-8") http-equiv="Content-Type"
-    title
+    title quiplrr
     = csrf_meta_tags
+    link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Raleway"
     = stylesheet_link_tag    'application', media: 'all'
     = javascript_include_tag 'application'
   body
-    .container
-      header.header
-
-      main.main
+    .container.article-layout
+      header.header.article-layout__hero
+        h1 Quiplrr
+      main.main.article-layout__main
         == yield
