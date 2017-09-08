@@ -54,3 +54,7 @@ gem 'marky_markov'
 gem 'pry-rails'
 
 gem 'slim-rails'
+
+gem 'bourbon'
+
+gem 'neat'

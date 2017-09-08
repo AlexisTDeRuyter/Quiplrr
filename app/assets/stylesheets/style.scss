@@ -1,0 +1,27 @@
+button {
+  @include button(shiny, #6AD3E8);
+  max-width: 475px;
+  width: 90%;
+  color: white;
+}
+
+h1 {
+  padding: 25px;
+  font: normal 60px/1 "Fredoka One", Helvetica, sans-serif;
+  color: rgba(255,255,255,1);
+  text-align: center;
+  text-shadow: 3px 3px 0 #6AD3E8 , 4px 4px 0 #6AD3E8 , 5px 5px 0 #6AD3E8 , 6px 6px 0 #6AD3E8 , 7px 7px 0 #6AD3E8 , 8px 8px 0 #6AD3E8 , 9px 9px 0 #6AD3E8;
+}
+
+h2 {
+  text-align: center;
+  color: #FFFFFF;
+  font-size: 30px;
+  font-family: 'Raleway';
+}
+
+html, body {
+  margin: 0;
+  height: 100%;
+  background-image: linear-gradient(to top left, #FFFFFF 0%, #FF444F 100%)
+}
