@@ -1,3 +1,5 @@
+require 'twitter'
+
 class TweetService
   def initialize
     connect
@@ -7,8 +9,8 @@ class TweetService
     @client.update(content)
   end
 
-  def get_2_trump
-    @client.user_timeline('realDonaldTrump', count: 2)
+  def get_tweets(handle)
+    @client.user_timeline(handle, count: 3200, include_rts: false, exclude_replies: true)
   end
 
   private
