@@ -58,4 +58,25 @@ run('trump')
 
 =end
 
+# TRUMP TWEET GENERATOR, run this from root of app, command -> dotenv bundle exec ruby app/data/generator.rb
+# require_relative '../services/tweet_service'
+
+# service = TweetService.new
+# trump_tweets = service.get_tweets('realDonaldTrump')
+# open('app/data/seeds/trump.txt', 'a') do |f|
+# 	tweets = []
+# 	trump_tweets.each do |tweet|
+# 		# do note look at tweets with links in them
+# 		unless tweet.full_text.match(/https?:\/\/[\S]+/)
+# 			# filter out hashtags and user mentions, delete elipses (used to show continuity across multiple tweets)
+# 			tweets << tweet.full_text.gsub(/#\S+/, '').gsub(/@\S+/, '').gsub(/\.\.\./, '')
+# 		end
+# 	end
+# 	# store tweets chronologically
+# 	tweets.reverse.each do |tweet|
+# 		f << tweet + ' '
+# 	end
+# end
+
+
 
