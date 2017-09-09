@@ -7,7 +7,7 @@ button {
 
 h1 {
   padding: 25px;
-  font: normal 60px/1 "Fredoka One", Helvetica, sans-serif;
+  font: normal 80px/1 "Fredoka One", Helvetica, sans-serif;
   color: rgba(255,255,255,1);
   text-align: center;
   text-shadow: 3px 3px 0 #6AD3E8 , 4px 4px 0 #6AD3E8 , 5px 5px 0 #6AD3E8 , 6px 6px 0 #6AD3E8 , 7px 7px 0 #6AD3E8 , 8px 8px 0 #6AD3E8 , 9px 9px 0 #6AD3E8;
@@ -24,4 +24,52 @@ html, body {
   margin: 0;
   height: 100%;
   background-image: linear-gradient(to top left, #FFFFFF 0%, #FF444F 100%)
+}
+
+#share-fb {
+  margin: 10px;
+  // display: none;
+}
+
+.select_style {
+    @include button(shiny, #6AD3E8);
+    overflow: hidden;
+    display: inline-block;
+    color: #FFFFFF;
+    font-weight: 300;
+    -webkit-border-radius: 5px 4px 4px 5px/5px 5px 4px 4px;
+    -moz-border-radius: 5px 4px 4px 5px/5px 5px 4px 4px;
+    border-radius: 5px 4px 4px 5px/5px 5px 4px 4px;
+    -webkit-box-shadow: 0 0 5px rgba(123, 123, 123, 0.2);
+    -moz-box-shadow: 0 0 5px rgba(123,123,123,.2);
+    box-shadow: 0 0 5px rgba(123, 123, 123, 0.2);
+    border: none;
+    font-family: "Raleway";
+    position: relative;
+    cursor: pointer;
+    padding-right:20px;
+}
+.select_style span {
+    position: absolute;
+    right: 10px;
+    width: 8px;
+    height: 8px;
+    background: url(http://projects.authenticstyle.co.uk/niceselect/arrow.png) no-repeat;
+    top: 50%;
+    margin-top: -4px;
+}
+.select_style select {
+    -webkit-appearance: none;
+    appearance:none;
+    width:120%;
+    background:none;
+    background:transparent;
+    border:none;
+    outline:none;
+    cursor:pointer;
+    padding:10px 10px;
+    color: white;
+    font-family: "Raleway";
+    font-size: 18px;
+    text-align: center;background: url(asset-path('arrow_drop_down.png')) right center no-repeat;
 }
