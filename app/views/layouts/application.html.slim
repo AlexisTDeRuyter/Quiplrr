@@ -2,15 +2,15 @@ doctype html
 html
   head
     meta content=("text/html; charset=UTF-8") http-equiv="Content-Type"
-    title quiplrr
+    title Quiplrr
     = csrf_meta_tags
     link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Raleway"
     = stylesheet_link_tag    'application', media: 'all'
     = javascript_include_tag 'application'
     meta property="og:url"           content="http://quiplrr.com/#{@quote.url}"
     meta property="og:type"          content="website"
-    meta property="og:title"         content="#{@quote.source}"
-    meta property="og:description"   content="#{@quote.quote}"
+    meta property="og:title"         content="#{@quote.quote}"
+    meta property="og:description"   content="#{@quote.source}"
   body
     #fb-root
     javascript:

@@ -77,6 +77,3 @@ run('trump')
 # 		f << tweet + ' '
 # 	end
 # end
-
-
-

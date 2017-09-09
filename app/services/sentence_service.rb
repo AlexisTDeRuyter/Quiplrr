@@ -1,11 +1,11 @@
 class SentenceService
-  SHAKESPEARE = MarkyMarkov::Dictionary.new(Rails.root.join('app', 'data', 'dictionaries', 'shakespeare'), 2)
-  TRUMP = MarkyMarkov::Dictionary.new(Rails.root.join('app', 'data', 'dictionaries', 'trump'), 2)
+  SHAKESPLRR = MarkyMarkov::Dictionary.new(Rails.root.join('app', 'data', 'dictionaries', 'shakesplrr'), 2)
+  TRUMPLRR = MarkyMarkov::Dictionary.new(Rails.root.join('app', 'data', 'dictionaries', 'trumplrr'), 2)
 
   def generate_sentence(person, n = 1)
     case person
-    when 'shakespeare' then SHAKESPEARE.generate_n_sentences(n)
-    when 'trump' then TRUMP.generate_n_sentences(n)
+    when 'shakesplrr' then SHAKESPLRR.generate_n_sentences(n)
+    when 'trumplrr' then TRUMPLRR.generate_n_sentences(n)
     end
   end
 end
