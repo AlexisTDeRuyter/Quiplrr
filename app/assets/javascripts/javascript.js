@@ -9,8 +9,17 @@ document.onreadystatechange = function () {
         request.onload = function() {
           if (request.status >= 200 && request.status < 400) {
             var resp = request.responseText;
-            var answer = document.getElementById('output-field')
-            answer.textContent = resp
+            resp = JSON.parse(resp)
+            var quote = resp.quote + '\n -' + resp.source
+            console.log(quote)
+            var answer = document.getElementById('quote-field')
+            var source = document.getElementById('source-field')
+            var shareFB = document.getElementById('share-fb')
+            console.log(shareFB)
+            answer.textContent = resp.quote
+            source.textContent = '-' + resp.source
+            shareFB.innerHTML = `<div class="fb-share-button" data-href="http://www.quiplrr.com/quiplr/${resp.url}" data-layout="button" data-size="large" data-mobile-iframe="true"><a class="fb-xfbml-parse-ignore" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.quiplrr.com%2F&amp;src=sdkpreparse">Share</a></div>`
+            FB.XFBML.parse(shareFB)
           }
         };
 
