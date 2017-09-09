@@ -4,7 +4,10 @@ document.onreadystatechange = function () {
 
       var requestSentence = function() {
         var request = new XMLHttpRequest();
-        request.open('GET', '/quiplr', true);
+        var select = document.getElementById('selector')
+        var data = select.options[select.selectedIndex].value
+        request.open('GET', `/quiplr?source=${data}`, true);
+        request.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded; charset=UTF-8');
 
         request.onload = function() {
           if (request.status >= 200 && request.status < 400) {
