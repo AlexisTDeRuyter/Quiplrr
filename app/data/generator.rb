@@ -77,14 +77,3 @@ run('trump')
 # 		f << tweet + ' '
 # 	end
 # end
-
-require 'marky_markov'
-def parse(source)
-	dic_path = 'dictionaries/' + "#{source}"
-	book = MarkyMarkov::Dictionary.new(dic_path, 2) # Saves/opens dictionary.mmd
-	book.parse_file "seeds/#{source}/#{source}.txt"
-	book.save_dictionary!
-
-	puts book.generate_1_sentences
-end
-parse('trumplrr')
