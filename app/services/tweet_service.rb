@@ -1,3 +1,5 @@
+require 'twitter'
+
 class TweetService
   def initialize
     connect
@@ -5,6 +7,10 @@ class TweetService
 
   def post_tweet(content)
     @client.update(content)
+  end
+
+  def get_tweets(handle)
+    @client.user_timeline(handle, count: 3200, include_rts: false, exclude_replies: true)
   end
 
   private
