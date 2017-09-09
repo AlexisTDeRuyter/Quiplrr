@@ -7,6 +7,10 @@ class TweetService
     @client.update(content)
   end
 
+  def get_2_trump
+    @client.user_timeline('realDonaldTrump', count: 2)
+  end
+
   private
 
   def connect
