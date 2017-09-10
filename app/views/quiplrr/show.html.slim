@@ -1,6 +1,8 @@
-h2.shadowed.answer#quote-field = @quote.quote
-h2.shadowed.source#source-field = "-#{@quote.source}"
-button.button id="ask-button" class="button question-button orange-button" type='button' Generate
+blockquote.example-right
+  p#quote-field = @quote.quote
+p.example-right-source#source-field = "-#{@quote.source}"
+= link_to 'New Quote', root_path, class: 'button'
+/ button.button id="ask-button" class="button question-button orange-button" type='button' Generate
 div#share-fb
   div class="fb-share-button" data-href="http://www.quiplrr.com/quiplrr/#{@quote.url}" data-layout="button" data-size="large" data-mobile-iframe="true"
     a class="fb-xfbml-parse-ignore" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.quiplrr.com%2F&amp;src=sdkpreparse" Share
