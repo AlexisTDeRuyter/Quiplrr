@@ -4,6 +4,8 @@
   width: 90%;
   color: white;
   height: 57px;
+  font-family: "Raleway";
+  font-size: 18px;
 }
 
 h1 {
@@ -48,23 +50,22 @@ html, body {
     font-family: "Raleway";
     position: relative;
     cursor: pointer;
-    padding-right:20px;
+    padding-left: 0px;
+    width: 300px;
+    max-width: 300px;
 }
 .select_style span {
     position: absolute;
     right: 10px;
     width: 8px;
     height: 8px;
-    background: url(http://projects.authenticstyle.co.uk/niceselect/arrow.png) no-repeat;
     top: 50%;
     margin-top: -4px;
 }
 .select_style select {
     -webkit-appearance: none;
     appearance:none;
-    width:120%;
-    background:none;
-    background:transparent;
+    width:128%;
     border:none;
     outline:none;
     cursor:pointer;
@@ -72,11 +73,27 @@ html, body {
     color: white;
     font-family: "Raleway";
     font-size: 18px;
-    text-align: center;background: url(asset-path('arrow_drop_down.png')) right center no-repeat;
+    text-align: left;
+    background:
+      url(asset-path('arrow_drop_down.png'));
+    background-position:
+      calc(100% - 60px),
+      calc(100% - 16px) calc(1em + 2px),
+      100% 0;
+    background-repeat: no-repeat;
 }
 
 .form-style {
   margin: 5px;
   display: inline-block;
   vertical-align: middle;
+}
+
+#form-section {
+  position:fixed;
+  left:0px;
+  bottom:0px;
+  height:200px;
+  width:100%;
+  background: transparent;
 }
