@@ -1,4 +1,5 @@
 document.onreadystatechange = function () {
+  if(document.getElementsByTagName('article')[0].matches('.index')) {
     if (document.readyState == "interactive") {
       var el = document.getElementById('ask-button')
 
@@ -21,6 +22,17 @@ document.onreadystatechange = function () {
             source.textContent = '-' + resp.source
             shareFB.innerHTML = '<div class="fb-share-button" data-href="http://www.quiplrr.com/quiplrr/' + resp.url + '" data-layout="button" data-size="large" data-mobile-iframe="true"><a class="fb-xfbml-parse-ignore" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.quiplrr.com%2F&amp;src=sdkpreparse">Share</a></div>'
             FB.XFBML.parse(shareFB)
+            document.getElementById('share-tw').innerHTML = ""
+            twttr.widgets.createShareButton(
+              '/quiplrr/' + resp.url,
+              document.getElementById('share-tw'),
+              {
+                text: resp.quote + ' - ' + resp.source,
+                size: "large",
+                via: 'quiplrr',
+                hashtags: 'quiplrr'
+              }
+            );
           }
         };
 
@@ -33,4 +45,5 @@ document.onreadystatechange = function () {
 
       el.addEventListener('click', requestSentence);
     }
+  }
 }
