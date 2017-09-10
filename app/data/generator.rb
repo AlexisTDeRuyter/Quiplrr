@@ -79,7 +79,7 @@ run('trump')
 # end
 
 
-require 'marky_markov'
+# require 'marky_markov'
 
 
 # def parse_donald_shakesplrr
@@ -93,6 +93,6 @@ require 'marky_markov'
 # 	puts book.generate_1_sentences
 # end
 # parse_donald_shakesplrr
-dic_path = 'dictionaries/donald_shakesplrr'
-book = MarkyMarkov::Dictionary.new(dic_path, 2)
-puts book.generate_1_sentences
+# dic_path = 'dictionaries/donald_shakesplrr'
+# book = MarkyMarkov::Dictionary.new(dic_path, 2)
+# puts book.generate_1_sentences
