@@ -59,3 +59,5 @@ gem 'slim-rails'
 gem 'bourbon'
 
 gem 'neat'
+
+gem 'rack-cors', :require => 'rack/cors'
