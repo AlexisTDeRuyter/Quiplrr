@@ -29,9 +29,14 @@ html, body {
   background-image: linear-gradient(to top left, #FFFFFF 0%, #FF444F 100%)
 }
 
-#share-fb {
+#share-box {
+}
+
+.share {
   margin: 10px;
   // display: none;
+  display: inline-block;
+  vertical-align: middle;
 }
 
 .select_style {
@@ -89,11 +94,17 @@ html, body {
   vertical-align: middle;
 }
 
-#form-section {
-  position:fixed;
-  left:0px;
-  bottom:0px;
-  height:200px;
-  width:100%;
-  background: transparent;
+@media screen and (min-height: 770px) {
+  #form-section {
+    position:fixed;
+    left:0px;
+    bottom:0px;
+    height:200px;
+    width:100%;
+    background: transparent;
+  }
+}
+
+.p-t-40 {
+  padding-top: 40px;
 }
