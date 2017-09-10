@@ -1,15 +1,9 @@
-button {
-  @include button(shiny, #6AD3E8);
-  max-width: 475px;
-  width: 90%;
-  color: white;
-}
-
 .button {
   @include button(shiny, #6AD3E8);
-  max-width: 475px;
+  max-width: 200px;
   width: 90%;
   color: white;
+  height: 57px;
 }
 
 h1 {
@@ -50,7 +44,7 @@ html, body {
     -webkit-box-shadow: 0 0 5px rgba(123, 123, 123, 0.2);
     -moz-box-shadow: 0 0 5px rgba(123,123,123,.2);
     box-shadow: 0 0 5px rgba(123, 123, 123, 0.2);
-    border: none;
+    border: 1px solid #006497;
     font-family: "Raleway";
     position: relative;
     cursor: pointer;
@@ -79,4 +73,10 @@ html, body {
     font-family: "Raleway";
     font-size: 18px;
     text-align: center;background: url(asset-path('arrow_drop_down.png')) right center no-repeat;
+}
+
+.form-style {
+  margin: 5px;
+  display: inline-block;
+  vertical-align: middle;
 }
