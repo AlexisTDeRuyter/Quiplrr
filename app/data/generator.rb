@@ -77,3 +77,22 @@ run('trump')
 # 		f << tweet + ' '
 # 	end
 # end
+
+
+# require 'marky_markov'
+
+
+# def parse_donald_shakesplrr
+# 	dic_path = 'dictionaries/donald_shakesplrr'
+# 	book = MarkyMarkov::Dictionary.new(dic_path, 2) # Saves/opens dictionary.mmd
+# 	book.parse_file "seeds/trumplrr/trumplrr_160_000.txt"
+# 	book.save_dictionary!
+# 	book.parse_file "seeds/shakesplrr/plays_160_000.txt"
+# 	book.save_dictionary!
+
+# 	puts book.generate_1_sentences
+# end
+# parse_donald_shakesplrr
+# dic_path = 'dictionaries/donald_shakesplrr'
+# book = MarkyMarkov::Dictionary.new(dic_path, 2)
+# puts book.generate_1_sentences

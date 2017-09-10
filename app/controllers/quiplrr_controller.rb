@@ -8,7 +8,9 @@ class QuiplrrController < ApplicationController
 
   def generate
     quiplrr = SentenceService.new
-    @quote = Quote.create(quote: quiplrr.generate_sentence(params[:source]), source: params[:source].capitalize)
+    source = params[:source] == 'donald_shakesplrr' ? 'Donald Shakesplrr' : params[:source].capitalize
+    quote = quiplrr.generate_sentence(params[:source]).capitalize
+    @quote = Quote.create(quote: quote, source: source)
     respond_to do |format|
       format.html { render json: {quote: @quote.quote, source: @quote.source, url: @quote.url}.to_json }
       format.js { render json: {quote: @quote.quote, source: @quote.source, url: @quote.url}.to_json }
