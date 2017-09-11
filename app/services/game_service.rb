@@ -1,61 +1,39 @@
-class GameService
-  SHAKESPLRR = Rails.root.join('app', 'data', 'dictionaries', 'shakesplrr')
-  TRUMPLRR = Rails.root.join('app', 'data', 'dictionaries', 'trumplrr')
-  DONALD_SHAKESPLRR = Rails.root.join('app', 'data', 'dictionaries', 'donald_shakesplrr')
+require "#{Rails.root}/app/services/_game_generator"
 
-  def generate_sentence(person, n = 1)
+class GameService
+
+  FAKE_SHAKESPLRR = GameGenerator.new(Rails.root.join('app', 'data', 'dictionaries', 'shakesplrr'))
+  FAKE_TRUMPLRR = GameGenerator.new(Rails.root.join('app', 'data', 'dictionaries', 'trumplrr'))
+  FAKE_DONALD_SHAKESPLRR = GameGenerator.new(Rails.root.join('app', 'data', 'dictionaries', 'donald_shakesplrr'))
+
+  REAL_SHAKESPLRR = GameGenerator.new(Rails.root.join('app', 'data', 'seeds', 'sample'))
+  REAL_TRUMPLRR = GameGenerator.new(Rails.root.join('app', 'data', 'seeds', 'sample'))
+  REAL_DONALD_SHAKESPLRR = GameGenerator.new(Rails.root.join('app', 'data', 'seeds', 'sample'))
+
+  def generate_real_sentence(person, n = 1)
     case person
-    when 'shakesplrr' then SHAKESPLRR.generate_n_sentences(n)
-    when 'trumplrr' then TRUMPLRR.generate_n_sentences(n)
-    when 'donald_shakesplrr' then DONALD_SHAKESPLRR.generate_n_sentences(n)
+    when 'shakesplrr' then (REAL_SHAKESPLRR).load_real_sentence
+    when 'trumplrr' then (REAL_TRUMPLRR).load_real_sentence
+    when 'donald_shakesplrr' then (REAL_DONALD_SHAKESPLRR).load_real_sentence
     end
   end
 
   def generate_fake_sentence(person, n = 1)
     case person
-    when 'shakesplrr' then GameGenerator.new(SHAKESPLRR).load_fake_sentence
-    when 'trumplrr' then GameGenerator.new(TRUMPLRR).load_fake_sentence
-    when 'donald_shakesplrr' then GameGenerator.new(DONALD_SHAKESPLRR).load_fake_sentence
+    when 'shakesplrr' then (FAKE_SHAKESPLRR).load_fake_sentence
+    when 'trumplrr' then (FAKE_TRUMPLRR).load_fake_sentence
+    when 'donald_shakesplrr' then (FAKE_DONALD_SHAKESPLRR).load_fake_sentence
     end
   end
-end
 
-class RealSentence
-  def initialize(path)
-    @file = File.read(path)
-    @sentences = @file.split(".")
-    @length = @sentences.length
-  end
-
-  # def print_all
-  #   puts @file
-  # end
-
-  def choose_sentence
-    random_index = Random.new_seed % @length
-    returning_sentence = @sentences[random_index].lstrip + "."
-
-    if !( returning_sentence.length > 10 && returning_sentence.length < 20 )
-      returning_sentence
+  def generate_game_sentence(person, n = 1)
+    if Random.new_seed % 2 == 0
+      "#{generate_fake_sentence(person, n = 1)} + fake"
     else
-      choose_sentence
+      "#{generate_real_sentence(person, n = 1)} + real"
     end
   end
 end
 
-require 'marky_markov'
-class FakeSentence
-  def initialize(path)
-    @file = MarkyMarkov::Dictionary.new(path, 2)
-  end
 
-  def choose_sentence
-    returning_sentence = @file.generate_1_sentences
-    if !( returning_sentence.length > 10 && returning_sentence.length < 20 )
-      returning_sentence
-    else
-      choose_sentence
-    end
-  end
 
-end
