@@ -47,18 +47,12 @@ document.onreadystatechange = function () {
       }
 
       el.addEventListener('click', requestSentence);
+
       addEventListener('DOMContentLoaded', function() {
         document.getElementById('selector').onchange=twitterHandleEntry;
       },false);
-
-      function twitterHandleEntry(event) {
-        if (event.target.value == "twitter-handle") {
-          document.getElementById("twitter-handle-hook").style.display = "block";
-        } else {
-          document.getElementById("twitter-handle-hook").style.display = "none";
-        }
-      }
-
     }
   }
 }
+
+

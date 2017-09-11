@@ -108,6 +108,35 @@ html, body {
 .p-t-40 {
   padding-top: 40px;
 }
+
 #twitter-handle-hook {
-  display: none;
+  margin: auto;
+  opacity: 0;
+  border: 1px solid lightgray;
+  border-radius: 5px;
+  background-color: white;
+  background-color:rgba(255, 255, 255, 0.3);
+  border-radius: 5px;
+  display: inline-block;
+  font-size: inherit;
+  font-weight: bold;
+  padding: 7px 18px;
+  text-align: center;
+  text-decoration: none;
+  color: #5D808C;
+  max-width: 495px;
+  width: 90%;
+  height: 80px;
+  font-family: "Raleway";
+  font-size: 16px;
+}
+
+#twitter-handle-field {
+  background: url(asset-path('at_sign.png')) no-repeat scroll 7px 7px;
+  width: 175px;
+  padding: 6px 25px;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
 }
