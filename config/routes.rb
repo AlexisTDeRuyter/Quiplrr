@@ -3,7 +3,13 @@ Rails.application.routes.draw do
 
 get '/quiplrr', to: 'quiplrr#generate'
 
+
+scope '/quiplrr' do
+  resources :games, only: [:index]
+end
+
 get '/quiplrr/:url', to: 'quiplrr#show'
+
 
 root 'quiplrr#index'
 

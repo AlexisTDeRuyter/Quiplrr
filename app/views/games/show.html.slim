@@ -1,0 +1,13 @@
+article.show
+  blockquote.example-right
+    p#quote-real-field = @quote.real_quote
+    p#quote-fake-field = @quote.fake_quote
+  p.example-right-source#source-field = "-#{@quote.source}"
+  #form-section
+    = link_to 'New Quote', root_path, class: 'button p-t-40'
+    div#share-box
+      span class="share fb-share-button" data-href="http://www.quiplrr.com/quiplrr/#{@quote.url}" data-layout="button" data-size="large" data-mobile-iframe="true"
+        a class="fb-xfbml-parse-ignore" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.quiplrr.com%2F&amp;src=sdkpreparse" Share
+      span.share
+        a.twitter-share-button href='https://twitter.com/share' data-size='large' data-text="#{@quote.quote} - #{@quote.source}" data-via="quiplrr" Tweet
+
