@@ -1,36 +1,37 @@
 require "#{Rails.root}/app/services/_game_generator"
 
 class GameService
+  attr_reader :is_real_sentence
 
-  FAKE_SHAKESPLRR = GameGenerator.new(Rails.root.join('app', 'data', 'dictionaries', 'shakesplrr'))
-  FAKE_TRUMPLRR = GameGenerator.new(Rails.root.join('app', 'data', 'dictionaries', 'trumplrr'))
-  FAKE_DONALD_SHAKESPLRR = GameGenerator.new(Rails.root.join('app', 'data', 'dictionaries', 'donald_shakesplrr'))
-
-  REAL_SHAKESPLRR = GameGenerator.new(Rails.root.join('app', 'data', 'seeds', 'sample'))
-  REAL_TRUMPLRR = GameGenerator.new(Rails.root.join('app', 'data', 'seeds', 'sample'))
-  REAL_DONALD_SHAKESPLRR = GameGenerator.new(Rails.root.join('app', 'data', 'seeds', 'sample'))
+  def initialize
+    @is_real_sentence = nil
+  end
 
   def generate_real_sentence(person, n = 1)
     case person
-    when 'shakesplrr' then (REAL_SHAKESPLRR).load_real_sentence
-    when 'trumplrr' then (REAL_TRUMPLRR).load_real_sentence
-    when 'donald_shakesplrr' then (REAL_DONALD_SHAKESPLRR).load_real_sentence
+    when 'shakesplrr' then GameGenerator.new(Rails.root.join('app', 'data', 'seeds', 'sample')).load_real_sentence
+    when 'trumplrr' then GameGenerator.new(Rails.root.join('app', 'data', 'seeds', 'sample')).load_real_sentence
+    when 'donald_shakesplrr' then GameGenerator.new(Rails.root.join('app', 'data', 'seeds', 'sample')).load_real_sentence
     end
   end
 
   def generate_fake_sentence(person, n = 1)
     case person
-    when 'shakesplrr' then (FAKE_SHAKESPLRR).load_fake_sentence
-    when 'trumplrr' then (FAKE_TRUMPLRR).load_fake_sentence
-    when 'donald_shakesplrr' then (FAKE_DONALD_SHAKESPLRR).load_fake_sentence
+    when 'shakesplrr' then GameGenerator.new(Rails.root.join('app', 'data', 'dictionaries', 'shakesplrr')).load_fake_sentence
+    when 'trumplrr' then GameGenerator.new(Rails.root.join('app', 'data', 'dictionaries', 'trumplrr')).load_fake_sentence
+    when 'donald_shakesplrr' then GameGenerator.new(Rails.root.join('app', 'data', 'dictionaries', 'donald_shakesplrr')).load_fake_sentence
     end
   end
 
   def generate_game_sentence(person, n = 1)
     if Random.new_seed % 2 == 0
-      "#{generate_fake_sentence(person, n = 1)} + fake"
+      @is_real_sentence = false
+      generate_fake_sentence(person, n = 1)
+      
     else
-      "#{generate_real_sentence(person, n = 1)} + real"
+      @is_real_sentence = true
+      generate_real_sentence(person, n = 1)
+      
     end
   end
 end

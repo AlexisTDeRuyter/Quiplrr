@@ -12,10 +12,11 @@ class GamesController < ApplicationController
     quiplrr = GameService.new
     source = params[:source] == 'donald_shakesplrr' ? 'Donald Shakesplrr' : params[:source].capitalize
     quote = quiplrr.generate_game_sentence(params[:source])
+    is_real_sentence = quiplrr.is_real_sentence
     @quote = Quote.create(quote: quote, source: source)
     respond_to do |format|
-      format.html { render json: {quote: @quote.quote, source: @quote.source, url: @quote.url}.to_json }
-      format.js { render json: {quote: @quote.quote, source: @quote.source, url: @quote.url}.to_json }
+      format.html { render json: {quote: @quote.quote, source: @quote.source, is_real_sentence: is_real_sentence, url: @quote.url}.to_json}
+      format.js { render json: {quote: @quote.quote, source: @quote.source, is_real_sentence: is_real_sentence, url: @quote.url}.to_json}
     end
   end
 
