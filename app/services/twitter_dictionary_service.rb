@@ -1,8 +1,9 @@
 require 'marky_markov'
 
 class TwitterDictionaryService
-  def initialize(handle)
-    path = "../data/dictionaries/#{handle}"
+  def initialize
+    #(handle)
+    # path = "../data/dictionaries/#{handle}"
     @dictionary = MarkyMarkov::TemporaryDictionary.new
   end
 
