@@ -15,7 +15,8 @@ document.onreadystatechange = function () {
 
         request.onload = function() {
           if (request.status >= 200 && request.status < 400) {
-            var resp = request.responseText;            resp = JSON.parse(resp)
+            var resp = request.responseText;
+            resp = JSON.parse(resp)
             var quote = resp.quote + '\n -' + resp.source
             var answer = document.getElementById('quote-field')
             var source = document.getElementById('source-field')
