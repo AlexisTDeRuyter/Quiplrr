@@ -1,7 +1,7 @@
 article.show
   blockquote.example-right
-    p#quote-field = @quote.fake_quote
-    p#quote-field = @quote.real_quote
+    p#quote-real-field = @quote.real_quote
+    p#quote-fake-field = @quote.fake_quote
   p.example-right-source#source-field = "-#{@quote.source}"
   #form-section
     = link_to 'New Quote', root_path, class: 'button p-t-40'
