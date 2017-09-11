@@ -13,6 +13,14 @@ class TweetService
     @client.user_timeline(handle, count: 3200, include_rts: false)
   end
 
+  def user_exists?(handle)
+    return false if handle.length == 0
+    self.get_tweets(handle)
+    true
+    rescue Twitter::Error
+      false
+  end
+
   private
 
   def connect

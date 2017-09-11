@@ -38,10 +38,14 @@ document.onreadystatechange = function () {
               }
             );
           }
+        if (request.status === 422) {
+          var resp = request.responseText;
+          resp = JSON.parse(resp)
+          alert(resp.error)
+        }
         };
 
         request.onerror = function() {
-          // There was a connection error of some sort
         };
 
         request.send();
