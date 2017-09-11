@@ -12,8 +12,7 @@ class QuiplrrController < ApplicationController
     quote = quiplrr.generate_sentence(params[:source])
     @quote = Quote.create(quote: quote, source: source)
     respond_to do |format|
-      format.html { render json: {quote: @quote.quote, source: @quote.source, url: @quote.url}.to_json }
-      format.js { render json: {quote: @quote.quote, source: @quote.source, url: @quote.url}.to_json }
+      format.json { render json: {quote: @quote.quote, source: @quote.source, url: @quote.url} }
     end
   end
 
