@@ -1,4 +1,5 @@
 require "#{Rails.root}/app/services/game_service"
+require "#{Rails.root}/app/services/sentence_service"
 
 
 class GamesController < ApplicationController
@@ -7,17 +8,15 @@ class GamesController < ApplicationController
   end
 
   def generate
+    puts params
     quiplrr = GameService.new
     source = params[:source] == 'donald_shakesplrr' ? 'Donald Shakesplrr' : params[:source].capitalize
-
-    real_quote = quiplrr.generate_real_sentence(params[:source])
-    fake_quote = quiplrr.generate_fake_sentence(params[:source])
-
-    @quote = Quote.create(fake_quote: fake_quote, real_quote: real_quote, source: source)
-
+    quote = quiplrr.generate_game_sentence(params[:source])
+    is_real_sentence = quiplrr.is_real_sentence
+    @quote = Quote.create(quote: quote, source: source)
     respond_to do |format|
-      format.html { render json: {fake_quote: @quote.fake_quote, real_quote: @quote.real_quote, source: @quote.source, url: @quote.url}.to_json }
-      format.js { render json: {fake_quote: @quote.fake_quote, real_quote: @quote.real_quote, source: @quote.source, url: @quote.url}.to_json }
+      format.html { render json: {quote: @quote.quote, source: @quote.source, is_real_sentence: is_real_sentence, url: @quote.url}.to_json}
+      format.js { render json: {quote: @quote.quote, source: @quote.source, is_real_sentence: is_real_sentence, url: @quote.url}.to_json}
     end
   end
 
