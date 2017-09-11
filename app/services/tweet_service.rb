@@ -10,7 +10,7 @@ class TweetService
   end
 
   def get_tweets(handle)
-    @client.user_timeline(handle, count: 3200, include_rts: false, exclude_replies: true)
+    @client.user_timeline(handle, count: 3200, include_rts: false)
   end
 
   private
