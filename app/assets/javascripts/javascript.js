@@ -6,7 +6,10 @@ document.onreadystatechange = function () {
         var request = new XMLHttpRequest();
         var select = document.getElementById('selector')
         var data = select.options[select.selectedIndex].value
-        request.open('GET', '/quiplrr?source=' + data, true);
+        if (data == 'twitter-handle') {
+          var handle = document.getElementById('twitter-handle-field').value
+          request.open('GET', '/quiplrr?source=' + data + '&handle=' + handle, true)
+        } else { request.open('GET', '/quiplrr?source=' + data, true); }
         request.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded; charset=UTF-8');
         request.onload = function() {
           if (request.status >= 200 && request.status < 400) {
@@ -20,6 +23,7 @@ document.onreadystatechange = function () {
             source.textContent = '-' + resp.source
             shareFB.innerHTML = '<div class="fb-share-button" data-href="http://www.quiplrr.com/quiplrr/' + resp.url + '" data-layout="button" data-size="large" data-mobile-iframe="true"><a class="fb-xfbml-parse-ignore" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.quiplrr.com%2F&amp;src=sdkpreparse">Share</a></div>'
             FB.XFBML.parse(shareFB)
+
             document.getElementById('share-tw').innerHTML = ""
             twttr.widgets.createShareButton(
               '/quiplrr/' + resp.url,
@@ -93,7 +97,6 @@ document.onreadystatechange = function () {
       }
       el.addEventListener('click', requestSentence);
 
-
       var requestCorrectnessForTrueTab = function(event) {
         var correctnessCheck = document.getElementById('correctness-check')
         var wrongSentenceButton = document.getElementById('source-field-false')
@@ -145,6 +148,11 @@ document.onreadystatechange = function () {
       truetab.addEventListener('click', requestCorrectnessForTrueTab);
       falsetab.addEventListener('click', requestCorrectnessForFalseTab);
 
+      addEventListener('DOMContentLoaded', function() {
+        document.getElementById('selector').onchange=twitterHandleEntry;
+      },false);
     }
   }
 }
+
+
