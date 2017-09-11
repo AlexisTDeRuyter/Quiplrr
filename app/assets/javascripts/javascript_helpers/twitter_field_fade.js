@@ -1,5 +1,5 @@
 function fadeIn(el) {
-  el.style.display = ''
+  el.style.display = 'inline-block'
   el.style.opacity = 0;
   var last = +new Date();
   var tick = function() {
@@ -15,7 +15,7 @@ function fadeIn(el) {
 }
 
 function fadeOut(el) {
-  if (el.style.opacity > .9 ) {
+  if (el.style.display === 'inline-block' ) {
     var last = +new Date();
     var tick = function() {
       el.style.opacity = el.style.opacity - (new Date() - last) / 400;
