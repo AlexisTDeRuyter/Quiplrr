@@ -14,7 +14,6 @@ function fadeIn(el) {
 }
 
 function fadeOut(el) {
-  el.style.opacity = 1;
   var last = +new Date();
   var tick = function() {
     el.style.opacity = el.style.opacity - (new Date() - last) / 400;

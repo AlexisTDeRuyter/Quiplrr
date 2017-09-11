@@ -9,13 +9,16 @@ class QuiplrrController < ApplicationController
   end
 
   def generate
-    if params[:handle]
-      # remember to handle error if there are an insufficient amount of tweets
-      tweets = TweetService.new.get_tweets(params[:handle])
-      text = TweetParsingService.new(tweets).tweets
-      tweet_dictionary = TwitterDictionaryService.new
-      tweet_dictionary.populate(text)
-      @quote = Quote.create(quote: tweet_dictionary.generate_n_sentences(1), source: "#{params[:handle]}lrr")
+    handle = params[:handle]
+    if handle
+      service = TweetService.new
+      if service.user_exists?(handle)
+        tweets = service.get_tweets(handle)
+        text = TweetParsingService.new(tweets).tweets
+        tweet_dictionary = TwitterDictionaryService.new
+        tweet_dictionary.populate(text)
+        @quote = Quote.create(quote: tweet_dictionary.generate_n_sentences(1), source: "#{handle}lrr")
+      end
     else
       quiplrr = SentenceService.new
       source = params[:source] == 'donald_shakesplrr' ? 'Donald Shakesplrr' : params[:source].capitalize
@@ -23,7 +26,11 @@ class QuiplrrController < ApplicationController
       @quote = Quote.create(quote: quote, source: source)
     end
     respond_to do |format|
-      format.json { render json: {quote: @quote.quote, source: @quote.source, url: @quote.url} }
+      if @quote
+        format.json { render json: {quote: @quote.quote, source: @quote.source, url: @quote.url} }
+      else
+        format.json { render json: {error: 'User account either does not exist or is set to private.'}, status: 422 }
+      end
     end
   end
 
