@@ -47,6 +47,10 @@ document.onreadystatechange = function () {
         request.send();
       }
       el.addEventListener('click', requestSentence);
+
+      addEventListener('DOMContentLoaded', function() {
+        document.getElementById('selector').onchange=twitterHandleEntry;
+      },false);
     }
     if(document.getElementsByTagName('article')[0].matches('.gameindex')) {
       var el = document.getElementById('play-button')
@@ -151,10 +155,6 @@ document.onreadystatechange = function () {
       var falsetab = document.getElementById('source-field-false')
       truetab.addEventListener('click', requestCorrectnessForTrueTab);
       falsetab.addEventListener('click', requestCorrectnessForFalseTab);
-
-      addEventListener('DOMContentLoaded', function() {
-        document.getElementById('selector').onchange=twitterHandleEntry;
-      },false);
     }
   }
 }
