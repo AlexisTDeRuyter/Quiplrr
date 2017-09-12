@@ -10,7 +10,11 @@ class TweetService
   end
 
   def get_tweets(handle)
-    @client.user_timeline(handle, count: 3200, include_rts: false)
+    tweets = []
+    tweets += @client.user_timeline(handle, count: 200, include_rts: false)
+    max = tweets.last[:id]
+    tweets += @client.user_timeline(handle, count: 200, include_rts: false, max_id: max)
+    tweets
   end
 
   def user_exists?(handle)
