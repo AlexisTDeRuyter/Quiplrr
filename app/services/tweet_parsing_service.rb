@@ -1,7 +1,6 @@
 class TweetParsingService
   attr_reader :tweets
   def initialize(tweets)
-    puts tweets.length
     @handle = tweets.first['user']['screen_name']
     @tweets = filter_tweets(tweets)
   end
@@ -11,7 +10,6 @@ class TweetParsingService
     tweets.each do |tweet|
       clean_tweets << tweet.full_text.gsub(/#\S+/, '').gsub(/@\S+/, '').gsub(/\.\.\./, '').gsub(/&amp/,'&').gsub(/https?:\/\/[\S]+/, ' ')
     end
-    puts clean_tweets.length
     clean_tweets.reverse.join(' ')
   end
 end
