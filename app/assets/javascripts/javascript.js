@@ -53,6 +53,7 @@ document.onreadystatechange = function () {
       },false);
     }
     if(document.getElementsByTagName('article')[0].matches('.gameindex')) {
+      list = []
       var el = document.getElementById('play-button')
 
       score = 100
@@ -76,6 +77,8 @@ document.onreadystatechange = function () {
             var shareFB = document.getElementById('share-fb')
             var finishtab = document.getElementById('finish-button')
             var play_button = document.getElementById('play-button')
+            var list_quote = resp.quote + " - it was " + ((isRealSentence == true) ? "real" : "fake") + " sentence\r\n"
+            list.push(list_quote)
             play_button.textContent = "Next"
             correctnessCheck.style.display = 'none'
             wrongSentenceButton.style.display = 'block'
@@ -162,7 +165,11 @@ document.onreadystatechange = function () {
 
       var showSummary = function(){
         var summary = document.getElementById('quote-field')
-        summary.textContent = "Your score: " + score
+        summary.textContent = "Your score: " + score + '\r\n'
+        for (i = 0; i < list.length; i++) { 
+          summary.textContent = summary.textContent + list[i] + '\r\n'
+        }
+        console.log(list)
         var play_button = document.getElementById('play-button')
         play_button.textContent = "Play Again!"
         var finishTab = document.getElementById('finish-button')
