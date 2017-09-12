@@ -9,9 +9,8 @@ class GameService
 
   def generate_real_sentence(person, n = 1)
     case person
-    when 'shakesplrr' then GameGenerator.new(Rails.root.join('app', 'data', 'seeds', 'sample')).load_real_sentence
-    when 'trumplrr' then GameGenerator.new(Rails.root.join('app', 'data', 'seeds', 'sample')).load_real_sentence
-    when 'donald_shakesplrr' then GameGenerator.new(Rails.root.join('app', 'data', 'seeds', 'sample')).load_real_sentence
+    when 'shakesplrr' then GameGenerator.new(Rails.root.join('app', 'data', 'real_dictionaries', 'shakesplrr')).load_real_sentence
+    when 'trumplrr' then GameGenerator.new(Rails.root.join('app', 'data', 'real_dictionaries', 'trumplrr')).load_real_sentence
     end
   end
 
@@ -19,7 +18,6 @@ class GameService
     case person
     when 'shakesplrr' then GameGenerator.new(Rails.root.join('app', 'data', 'dictionaries', 'shakesplrr')).load_fake_sentence
     when 'trumplrr' then GameGenerator.new(Rails.root.join('app', 'data', 'dictionaries', 'trumplrr')).load_fake_sentence
-    when 'donald_shakesplrr' then GameGenerator.new(Rails.root.join('app', 'data', 'dictionaries', 'donald_shakesplrr')).load_fake_sentence
     end
   end
 
