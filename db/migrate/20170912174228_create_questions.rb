@@ -3,7 +3,9 @@ class CreateQuestions < ActiveRecord::Migration[5.1]
     create_table :questions do |t|
       t.string :quote
       t.boolean :is_real
-      t.integer :game_id
+      t.integer :group_game_id
+
+      t.timestamps
     end
   end
 end
