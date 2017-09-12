@@ -15,8 +15,7 @@ class GamesController < ApplicationController
     is_real_sentence = quiplrr.is_real_sentence
     @quote = Quote.create(quote: quote, source: source)
     respond_to do |format|
-      format.html { render json: {quote: @quote.quote, source: @quote.source, is_real_sentence: is_real_sentence, url: @quote.url}.to_json}
-      format.js { render json: {quote: @quote.quote, source: @quote.source, is_real_sentence: is_real_sentence, url: @quote.url}.to_json}
+      format.js { render json: {quote: @quote.quote, source: @quote.source, is_real_sentence: is_real_sentence, url: @quote.url} }
     end
   end
 
