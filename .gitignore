@@ -22,3 +22,6 @@
 /app/.DS_store
 .DS_store
 .env
+/public/packs
+/public/packs-test
+/node_modules
