@@ -1,0 +1,3 @@
+class GroupGamesContoller < ApplicationController
+
+end
