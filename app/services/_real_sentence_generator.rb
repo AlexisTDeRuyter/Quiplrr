@@ -10,7 +10,7 @@ class RealSentence
     random_index = Random.new_seed % @length
     returning_sentence = @sentences[random_index].lstrip + "."
 
-    if !( returning_sentence.length > 10 && returning_sentence.length < 20 )
+    if returning_sentence.length > 10 && returning_sentence.length < 200
       returning_sentence
     else
       choose_sentence
