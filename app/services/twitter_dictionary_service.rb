@@ -8,7 +8,6 @@ class TwitterDictionaryService
   end
 
   def populate(text)
-    puts text
     @dictionary.parse_string(text)
   end
 
