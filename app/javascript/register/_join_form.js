@@ -29,9 +29,8 @@ export default class JoinForm extends Component {
     })
     .then((response) => response.json())
     .then((responseJson) => {
-      let cable = ActionCable.createConsumer('ws://localhost:3000/websocket?username=' + responseJson['player_name'])
-      cable.subscriptions.create({ channel: 'GroupGameChannel', room: responseJson['token'] })
-      this.props.updateHistory()
+      this.props._createSubscription(responseJson['token'], responseJson['player_name'])
+      this.props._updateHistory()
     })
   }
 

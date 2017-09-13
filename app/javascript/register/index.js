@@ -1,10 +1,11 @@
 import React, { Component } from 'react'
 import RegisterForm from './_register_form'
 import JoinForm from './_join_form'
+import { withRouter } from 'react-router-dom'
 
-export default class Register extends Component {
+class Register extends Component {
 
-  updateHistory() {
+  _updateHistory = () => {
     this.props.history.push('/quiplrr/group/join')
   }
 
@@ -13,13 +14,21 @@ export default class Register extends Component {
       <div>
         <div>
           <button type='button' className='button'>New Game</button>
-          <RegisterForm updateHistory={this.updateHistory.bind(this)} />
+          <RegisterForm
+            _updateHistory={this._updateHistory.bind(this)}
+            _createSubscription={this.props._createSubscription}
+            _createGame={this.props._createGame}
+          />
         </div>
         <div>
           <button type='button' className='button'>Join Game</button>
-          <JoinForm updateHistory={this.updateHistory.bind(this)} />
+          <JoinForm
+            _updateHistory={this._updateHistory.bind(this)}
+            _createSubscription={this.props._createSubscription}
+          />
         </div>
       </div>
     )
   }
 }
+export default withRouter(Register)
