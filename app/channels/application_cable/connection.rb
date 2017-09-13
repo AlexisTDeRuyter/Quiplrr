@@ -3,7 +3,7 @@ module ApplicationCable
     identified_by :player
 
     def connect
-      self.player = 'samson' # Player.create(username: params[:username])
+      self.player = request.params[:username]
     end
   end
 end

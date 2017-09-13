@@ -10,8 +10,11 @@ get '/quiplrr/games/generate', to: 'games#generate'
 get '/quiplrr/group', to: 'group_games#index'
 get '/quiplrr/:url', to: 'quiplrr#show'
 
+post '/quiplrr/group/create', to: 'group_games#create'
+post '/quiplrr/players/create', to: 'players#create'
 
 root 'quiplrr#index'
 get 'quiplrr/group/register', to: 'group_games#index'
+get 'quiplrr/group/join', to: 'group_games#index'
 
 end
