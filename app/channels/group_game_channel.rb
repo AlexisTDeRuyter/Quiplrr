@@ -1,6 +1,7 @@
 class GroupGameChannel < ApplicationCable::Channel
   def subscribed
-    stream_from 'group_game_#{params[:id]}'
+    puts params
+    stream_from "group_game_#{params[:room]}"
   end
 end
 

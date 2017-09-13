@@ -1,3 +1,4 @@
-class GroupGamesContoller < ApplicationController
-
+class GroupGamesController < ApplicationController
+  def index
+  end
 end
