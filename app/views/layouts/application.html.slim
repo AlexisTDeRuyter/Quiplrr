@@ -39,6 +39,7 @@ html
         }(document, 'script', 'facebook-jssdk'))
     .container.article-layout
       header.header.article-layout__hero
-        h1 Quiplrr
+        h1
+          =link_to 'Quiplrr', root_path, class: 'home-link'
       main.main.article-layout__main
         == yield

@@ -20,7 +20,7 @@ class Register extends Component {
             _createGame={this.props._createGame}
           />
         </div>
-        <div>
+        <div className='mar-t-20'>
           <button type='button' className='button'>Join Game</button>
           <JoinForm
             _updateHistory={this._updateHistory.bind(this)}
