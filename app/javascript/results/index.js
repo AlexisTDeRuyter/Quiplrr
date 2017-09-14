@@ -15,22 +15,18 @@ class Results extends Component {
 
   render() {
     return (
-      <div>
-        <div>
-          <h1>Results</h1>
+      <div className='competition-podium well'>
+        <div className='podium-block bronze'>
+          <div class='name'>{this.props.rank[2][0]}</div>
+          <div className='podium'><span>{this.props.rank[2][1]}</span></div>
         </div>
-        <div>
-          <table>
-            <thead>
-              <tr>
-                <th>Player</th>
-                <th>Score</th>
-              </tr>
-            </thead>
-            <tbody>
-              {this._listRankings()}
-            </tbody>
-          </table>
+        <div className='podium-block gold'>
+          <div className='name'>{this.props.rank[0][0]}</div>
+          <div className='podium'><span>{this.props.rank[0][1]}</span></div>
+        </div>
+        <div className='podium-block silver'>
+          <div className='name'>{this.props.rank[1][0]}</div>
+          <div className='podium'><span>{this.props.rank[1][1]}</span></div>
         </div>
       </div>
     )
