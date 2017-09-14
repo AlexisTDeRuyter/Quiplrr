@@ -93,6 +93,7 @@ export default class GroupGameRoutes extends Component {
   render(){
     return (
       <Router history={this.history}>
+        <div>
           <Route exact path="/quiplrr/group/register"
             render={()=><Register
               _createSubscription={this._createSubscription.bind(this)}
@@ -116,6 +117,7 @@ export default class GroupGameRoutes extends Component {
             render={()=><Results
               rank={this.state.rank}
               />}/>
+        </div>
       </Router>
     )
   }
