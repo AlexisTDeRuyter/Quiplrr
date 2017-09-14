@@ -80,10 +80,12 @@ export default class GroupGameRoutes extends Component {
   }
 
   _checkAnswer = (response) => {
+    this.setState({
+      showAnswerButtons: false
+    })
     if (this.state.is_real === response) {
       this.setState({
-        score: (this.state.score + 100),
-        showAnswerButtons: false
+        score: (this.state.score + 100)
       })
     }
   }
