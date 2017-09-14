@@ -21,6 +21,7 @@ class GroupGameChannel < ApplicationCable::Channel
       @player.save!
       sleep(0.2)
       ActionCable.server.broadcast("group_game_#{params[:room]}", rank: @game.players.rank)
+      @game.destroy
     end
   end
 
