@@ -21,9 +21,12 @@ class GroupGameChannel < ApplicationCable::Channel
   end
 
   def send_questions
-    @game = GroupGame.find_by(token: params[:room])
-    if @game && @game.questions.any?
-      @question = @game.questions.first
+    game = GroupGame.find_by(token: params[:room])
+    return unless game
+    questions = game.questions
+    first_player = game.players.order(:username).first
+    if player == first_player.username && questions.any?
+      @question = questions.first
       ActionCable.server.broadcast("group_game_#{params[:room]}", {question: @question.quote, is_real: @question.is_real.to_s})
       @question.destroy
     end
