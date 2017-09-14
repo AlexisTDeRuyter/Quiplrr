@@ -10,6 +10,6 @@ import GroupGameRoutes from 'games'
 document.addEventListener('DOMContentLoaded', () => {
   ReactDOM.render(
     <GroupGameRoutes />,
-    document.querySelectorAll('.main').appendChild(document.createElement('div')),
+    document.main.appendChild(document.createElement('div')),
   )
 })
