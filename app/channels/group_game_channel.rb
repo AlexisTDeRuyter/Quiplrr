@@ -21,6 +21,9 @@ class GroupGameChannel < ApplicationCable::Channel
   end
 
   def send_questions
+    puts '*' * 500
+    puts 'sending question'
+    puts "current user #{player}"
     GroupGame.all.each do |game|
       if game.questions.any?
         @question = game.questions.first
