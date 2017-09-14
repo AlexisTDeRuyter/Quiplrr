@@ -6,5 +6,5 @@ test:
 
 production:
   adapter: redis
-  url: redis://localhost:6379/1
+  url: redis://h:p5f6282d89069db4b8d60712f0a1fc4a373e4c5a492ea5aa8f992d2cec34aff9d@ec2-34-232-55-169.compute-1.amazonaws.com:58449
   channel_prefix: quiplr_production

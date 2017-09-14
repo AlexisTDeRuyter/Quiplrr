@@ -54,7 +54,7 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'marky_markov'
 
-gem 'redis'
+gem 'redis', '<= 3.3'
 
 gem 'pry-rails'
 
