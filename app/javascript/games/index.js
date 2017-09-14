@@ -24,6 +24,7 @@ export default class GroupGameRoutes extends Component {
       questionsRemaining: 11,
       playerName: '',
       rank: [],
+      showAnswerButtons: true,
     }
   }
   _createGame = (token, playerName) => {
@@ -41,7 +42,7 @@ export default class GroupGameRoutes extends Component {
   }
 
   _createSubscription = (token, playerName) => {
-    let cable = ActionCable.createConsumer('wss://quiplrr.herokuapp.com/websocket?username=' + playerName)
+    let cable = ActionCable.createConsumer('ws://www.quiplrr.com/websocket?username=' + playerName)
     let subscription = cable.subscriptions.create({
       channel: 'GroupGameChannel',
       room: token
@@ -56,6 +57,7 @@ export default class GroupGameRoutes extends Component {
           this.history.push('/quiplrr/group/group_game')
         } else if (data['question']) {
           this.setState({
+            showAnswerButtons: true,
             question: data['question'],
             is_real: data['is_real'],
             questionsRemaining: (this.state.questionsRemaining - 1)
@@ -80,7 +82,8 @@ export default class GroupGameRoutes extends Component {
   _checkAnswer = (response) => {
     if (this.state.is_real === response) {
       this.setState({
-        score: (this.state.score + 100)
+        score: (this.state.score + 100),
+        showAnswerButtons: false
       })
     }
   }
@@ -114,6 +117,7 @@ export default class GroupGameRoutes extends Component {
               score={this.state.score}
               question={this.state.question}
               _checkAnswer={this._checkAnswer.bind(this)}
+              showAnswerButtons={this.state.showAnswerButtons}
             />}/>
           <Route exact path='/quiplrr/group/results'
             render={()=><Results
