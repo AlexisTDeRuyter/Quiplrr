@@ -13,7 +13,7 @@ export default class RegisterForm extends Component {
 
   _handleButtonPress = (event) => {
     event.preventDefault()
-    fetch('http://localhost:3000/quiplrr/group/create', {
+    fetch('http://www.quiplrr.com/quiplrr/group/create', {
       method: 'POST',
       headers: {
         'Accept': 'application/json',

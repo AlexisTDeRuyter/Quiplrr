@@ -41,7 +41,7 @@ export default class GroupGameRoutes extends Component {
   }
 
   _createSubscription = (token, playerName) => {
-    let cable = ActionCable.createConsumer('ws://localhost:3000/websocket?username=' + playerName)
+    let cable = ActionCable.createConsumer('ws://www.quiplrr.com/websocket?username=' + playerName)
     let subscription = cable.subscriptions.create({
       channel: 'GroupGameChannel',
       room: token

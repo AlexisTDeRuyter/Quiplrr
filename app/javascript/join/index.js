@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import Players from './_players'
 import { withRouter } from 'react-router-dom'
-
+ find 
 class Join extends Component {
   constructor(props) {
     super(props)
