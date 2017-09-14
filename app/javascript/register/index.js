@@ -66,7 +66,7 @@ class Register extends Component {
         <div>
           {this._displayNewGame()}
         </div>
-        <div>
+        <div className='mar-t-20'>
           {this._displayJoinGame()}
         </div>
       </div>

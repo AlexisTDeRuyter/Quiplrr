@@ -124,6 +124,10 @@ html, body {
   padding-top: 40px;
 }
 
+.mar-t-20 {
+  margin-top: 40px;
+}
+
 #twitter-handle-hook {
   margin: auto;
   opacity: 0;
@@ -173,17 +177,21 @@ html, body {
   color: #3fb3ca;
   max-width: 495px;
   width: 90%;
-  height: 80px;
+  height: 120px;
   font-family: "Raleway";
   font-size: 16px;
 }
 
 .input-fields input {
-  margin: 5px;
+  margin: 15px;
   width: 175px;
   padding: 6px 25px;
   display: inline-block;
   border: 1px solid #ccc;
   border-radius: 4px;
   box-sizing: border-box;
+}
+.home-link {
+  text-decoration: none;
+  color: white;
 }
