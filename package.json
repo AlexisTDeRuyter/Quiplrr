@@ -1,0 +1,16 @@
+{
+  "dependencies": {
+    "@rails/webpacker": "^3.0.1",
+    "actioncable": "^5.1.4",
+    "babel-preset-react": "^6.24.1",
+    "prop-types": "^15.5.10",
+    "react": "^15.6.1",
+    "react-dom": "^15.6.1",
+    "react-router-dom": "^4.2.2",
+    "react_ujs": "^2.2.1",
+    "webpacker-react": "^0.3.0"
+  },
+  "devDependencies": {
+    "webpack-dev-server": "^2.7.1"
+  }
+}
