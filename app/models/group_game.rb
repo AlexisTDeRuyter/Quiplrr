@@ -1,7 +1,7 @@
 require "#{Rails.root}/app/services/game_service"
 
 class GroupGame < ApplicationRecord
-  has_many :players
+  has_many :players, dependent: :destroy
   has_many :questions
   before_save :generate_token
 

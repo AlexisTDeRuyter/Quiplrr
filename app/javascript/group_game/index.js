@@ -12,8 +12,8 @@ export default class GroupGame extends Component {
           <h1>{this.props.question}</h1>
         </div>
         <div>
-          <button onClick={this._handleClick} value='false' className='button'>Fake</button>
-          <button onClick={this._handleClick} value='true' className='button'>Real</button>
+          {this.props.showAnswerButtons ? <button onClick={this._handleClick} value='false' className='button'>Fake</button> : null}
+          {this.props.showAnswerButtons ? <button onClick={this._handleClick} value='true' className='button'>Real</button> : null}
         </div>
         <div>
           <h4>Current Score: {this.props.score}</h4>

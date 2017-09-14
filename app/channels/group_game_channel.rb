@@ -6,21 +6,17 @@ class GroupGameChannel < ApplicationCable::Channel
   end
 
   def receive(data)
-    puts 'data received'
-    puts '*' * 500
-    puts data
     if data['start']
-      puts 'in if statement'
       @game = GroupGame.find_by(token: params[:room])
       @game.generate_questions('trumplrr')
       ActionCable.server.broadcast("group_game_#{params[:room]}", data)
     elsif data['results']
       @player = Player.find_by(username: data['playerName'])
-
       @player.result = data['results']
       @player.save!
       sleep(0.2)
       ActionCable.server.broadcast("group_game_#{params[:room]}", rank: @game.players.rank)
+      @game.destroy
     end
   end
 
@@ -33,8 +29,3 @@ class GroupGameChannel < ApplicationCable::Channel
     end
   end
 end
-
-
-# Somewhere in your app this is called, perhaps from a NewCommentJob
-# ActionCable.server.broadcast \
-#   "group_game_#{params[:id]}", { title: 'New things!', body: 'All the news that is fit to print' }
