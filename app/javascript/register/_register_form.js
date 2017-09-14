@@ -34,7 +34,7 @@ export default class RegisterForm extends Component {
 
   render() {
     return (
-      <div className='input-fields'>
+      <div className='input-fields registration-form'>
         <form onSubmit={this._handleButtonPress}>
           <div>
             <input type='text' placeholder='Player Name' value={this.state.username} onChange={this._handleChange} />
