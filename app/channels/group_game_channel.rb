@@ -21,17 +21,17 @@ class GroupGameChannel < ApplicationCable::Channel
   end
 
   def send_questions
-    GroupGame.all.each do |game|
-      questions = game.questions
-      if questions
-        puts '*' * 500
-        puts 'sending question'
-        puts "current user #{player}"
-        puts "questions remaining #{questions.count}"
-        @question = questions.first
-        ActionCable.server.broadcast("group_game_#{game.token}", {question: @question.quote, is_real: @question.is_real.to_s})
-        @question.destroy
-      end
+    game = GroupGame.find_by(token: params[:room])
+    questions = game.questions
+    first_player = game.players.order(:username).first
+    if player == first_player && questions.any?
+      puts '*' * 500
+      puts 'sending question'
+      puts "current user #{player}"
+      puts "questions remaining #{questions.count}"
+      @question = questions.first
+      ActionCable.server.broadcast("group_game_#{params[:room]}", {question: @question.quote, is_real: @question.is_real.to_s})
+      @question.destroy
     end
   end
 end
