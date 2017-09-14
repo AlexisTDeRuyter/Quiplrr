@@ -39,7 +39,13 @@ html
         }(document, 'script', 'facebook-jssdk'))
     .container.article-layout
       header.header.article-layout__hero
-        h1
-          =link_to 'Quiplrr', root_path, class: 'home-link'
+        nav
+          .nav-item
+            =link_to 'Home', root_path, class: 'nav-link'
+          .nav-item
+            =link_to 'Solo Play', quiplrr_games_path, class: 'nav-link'
+          .nav-item
+            =link_to 'Group Play', quiplrr_group_register_path, class: 'nav-link'
+        h1 Quiplrr
       main.main.article-layout__main
         == yield
