@@ -16,7 +16,7 @@ export default class JoinForm extends Component {
 
   _handleButtonPress = (event) => {
     event.preventDefault()
-    fetch('http://www.quiplrr.com/quiplrr/players/create', {
+    fetch('https://www.quiplrr.com/quiplrr/players/create', {
       method: 'POST',
       headers: {
         'Accept': 'application/json',
