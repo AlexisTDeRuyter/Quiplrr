@@ -25,6 +25,9 @@ class GroupGameChannel < ApplicationCable::Channel
     return unless game
     questions = game.questions
     first_player = game.players.order(:username).first
+    puts '---' * 10
+    puts first_player
+    puts player
     if player == first_player && questions.any?
       puts '*' * 500
       puts 'sending question'
