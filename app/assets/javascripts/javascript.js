@@ -22,7 +22,7 @@ document.onreadystatechange = function () {
               var shareFB = document.getElementById('share-fb')
               answer.textContent = resp.quote
               source.textContent = '-' + resp.source
-              shareFB.innerHTML = '<div class="fb-share-button" data-href="http://www.quiplrr.com/quiplrr/' + resp.url + '" data-layout="button" data-size="large" data-mobile-iframe="true"><a class="fb-xfbml-parse-ignore" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.quiplrr.com%2F&amp;src=sdkpreparse">Share</a></div>'
+              shareFB.innerHTML = '<div class="fb-share-button" data-href="http://www.quiplrr.herokuapp.com/quiplrr/' + resp.url + '" data-layout="button" data-size="large" data-mobile-iframe="true"><a class="fb-xfbml-parse-ignore" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.quiplrr.herokuapp.com%2F&amp;src=sdkpreparse">Share</a></div>'
               FB.XFBML.parse(shareFB)
 
               document.getElementById('share-tw').innerHTML = ""
@@ -91,7 +91,7 @@ document.onreadystatechange = function () {
               realSentenceButton.textContent = "it is real sentence"
               wrongSentenceButton.textContent = "it is not real sentence"
               scoreBoard.textContent = "Your Score: " + score
-              shareFB.innerHTML = '<div class="fb-share-button" data-href="http://www.quiplrr.com/quiplrr/' + resp.url + '" data-layout="button" data-size="large" data-mobile-iframe="true"><a class="fb-xfbml-parse-ignore" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.quiplrr.com%2F&amp;src=sdkpreparse">Share</a></div>'
+              shareFB.innerHTML = '<div class="fb-share-button" data-href="http://www.quiplrr.herokuapp.com/quiplrr/' + resp.url + '" data-layout="button" data-size="large" data-mobile-iframe="true"><a class="fb-xfbml-parse-ignore" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.quiplrr.herokuapp.com%2F&amp;src=sdkpreparse">Share</a></div>'
               FB.XFBML.parse(shareFB)
               document.getElementById('share-tw').innerHTML = ""
               twttr.widgets.createShareButton(
