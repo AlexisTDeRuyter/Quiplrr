@@ -7,8 +7,10 @@ export default class GroupGame extends Component {
   _displayAnswerButtons() {
     if (this.props.showAnswerButtons) {
       return (
-        <button onClick={this._handleClick} value='true' className='button'>Trump</button>
-        <button onClick={this._handleClick} value='false' className='button'>Trumplrr</button>
+        <div>
+          <button onClick={this._handleClick} value='true' className='button'>Trump</button>
+          <button onClick={this._handleClick} value='false' className='button'>Trumplrr</button>
+        </div>
       )
     }
     return false
