@@ -54,134 +54,126 @@ document.onreadystatechange = function () {
         },false);
       }
       if(document.getElementsByTagName('article')[0].matches('.gameindex')) {
-        list = []
-        var el = document.getElementById('play-button')
+      document.getElementById('game').style.display = 'inline-block'
+      var el = document.getElementById('play-button')
+      score = 0
+      corrected = 0
+      notCorrected = 0
 
-        score = 100
-        var requestSentence = function() {
-          var request = new XMLHttpRequest();
-          var select = document.getElementById('selector')
-          var data = select.options[select.selectedIndex].value
-          request.open('GET', '/quiplrr/games/generate?source=' + data, true);
-          request.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded; charset=UTF-8');
-          request.onload = function() {
-            if (request.status >= 200 && request.status < 400) {
-              var resp = request.responseText;
-              resp = JSON.parse(resp)
-              isRealSentence = resp.is_real_sentence
-              var quote = resp.quote + '\n -' + resp.source
-              var answer = document.getElementById('quote-field')
-              var realSentenceButton = document.getElementById('source-field-true')
-              var wrongSentenceButton = document.getElementById('source-field-false')
-              var correctnessCheck = document.getElementById('correctness-check')
-              var scoreBoard = document.getElementById('score-board')
-              var shareFB = document.getElementById('share-fb')
-              var finishtab = document.getElementById('finish-button')
-              var play_button = document.getElementById('play-button')
-              var list_quote = resp.quote + " - it was " + ((isRealSentence == true) ? "real" : "fake") + " sentence\r\n"
-              list.push(list_quote)
-              play_button.textContent = "Next"
-              correctnessCheck.style.display = 'none'
-              wrongSentenceButton.style.display = 'block'
-              realSentenceButton.style.display = 'block'
-              finishTab.style.display = 'block'
-              truetab.addEventListener('click', requestCorrectnessForTrueTab);
-              falsetab.addEventListener('click', requestCorrectnessForFalseTab);
-              answer.textContent = resp.quote
-              realSentenceButton.textContent = "it is real sentence"
-              wrongSentenceButton.textContent = "it is not real sentence"
-              scoreBoard.textContent = "Your Score: " + score
-              shareFB.innerHTML = '<div class="fb-share-button" data-href="https://quiplrr.herokuapp.com/quiplrr/' + resp.url + '" data-layout="button" data-size="large" data-mobile-iframe="true"><a class="fb-xfbml-parse-ignore" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fquiplrr.herokuapp.com%2F&amp;src=sdkpreparse">Share</a></div>'
-              FB.XFBML.parse(shareFB)
-              document.getElementById('share-tw').innerHTML = ""
-              twttr.widgets.createShareButton(
-                '/quiplrr/' + resp.url,
-                document.getElementById('share-tw'),
-                {
-                  text: resp.quote + ' - ' + resp.source,
-                  size: "large",
-                  via: 'quiplrr',
-                  hashtags: 'quiplrr'
-                }
-              );
+      var loadingButtonPrevent = function(){
+        let elementTrue = document.getElementById("source-field-true")
+        let elementFalse = document.getElementById("source-field-false")
+        elementTrue.disabled = true;
+        elementFalse.disabled = true;
+        document.getElementById('quote-field').textContent = null
+        setTimeout(function(){
+          elementTrue.disabled = false;
+          elementFalse.disabled = false;
+        }, 1000);
+      }
+
+      var requestSentence = function() {
+        loadingButtonPrevent()
+        var request = new XMLHttpRequest();
+        var select = document.getElementById('selector')
+        var data = select.options[select.selectedIndex].value
+        request.open('GET', '/quiplrr/games/generate?source=' + data, true);
+        request.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded; charset=UTF-8');
+        request.onload = function() {
+          if (request.status >= 200 && request.status < 400) {
+            var resp = request.responseText;
+            resp = JSON.parse(resp)
+            isRealSentence = resp.is_real_sentence
+            var quote = resp.quote + '\n -' + resp.source
+            var answer = document.getElementById('quote-field')
+            var answer_clean = document.getElementById('temp-field').textContent = null
+            var realSentenceButton = document.getElementById('source-field-true')
+            var wrongSentenceButton = document.getElementById('source-field-false')
+            var correctnessCheck = document.getElementById('correctness-check')
+            var scoreBoard = document.getElementById('game-score')
+            var shareFB = document.getElementById('share-fb')
+            var finishtab = document.getElementById('finish-button')
+            var play_button = document.getElementById('play-button')
+            var truetab = document.getElementById('source-field-true')
+            var falsetab = document.getElementById('source-field-false')
+            var list_quote = resp.quote + " - it was " + ((isRealSentence == true) ? "real" : "fake") + " sentence\r\n"
+            var correctnessDiv = document.getElementById('correctness-section')
+
+            document.getElementById('loader').style.display = 'none'
+            correctnessDiv.style.display = 'block'
+            play_button.style.display = 'none'
+            document.getElementById('form-section').style.display = 'none'
+            correctnessCheck.style.display = 'none'
+            finishTab.style.display = 'inline-block'
+            truetab.addEventListener('click', requestCorrectnessForTrueTab);
+            falsetab.addEventListener('click', requestCorrectnessForFalseTab);
+            answer.textContent = resp.quote
+            wrongSentenceButton.textContent = data
+
+            if(data === 'shakesplrr') {
+              realSentenceButton.textContent = "shakespear"
+            } else {
+              realSentenceButton.textContent = "trump"
             }
-          };
-          request.onerror = function() {
-            // There was a connection error of some sort
-          };
-          request.send();
-        }
-        el.addEventListener('click', requestSentence);
-
-        var requestCorrectnessForTrueTab = function(event) {
-          var correctnessCheck = document.getElementById('correctness-check')
-          var wrongSentenceButton = document.getElementById('source-field-false')
-          var realSentenceButton = document.getElementById('source-field-true')
-          var scoreBoard = document.getElementById('score-board')
-          if (isRealSentence == true){
-            correctnessCheck.style.display = 'block'
-            correctnessCheck.textContent = "correct!"
-            score += 10
             scoreBoard.textContent = "Your Score: " + score
           }
-          else{
-            correctnessCheck.style.display = 'block'
-            correctnessCheck.textContent = "wrong!"
-            score -= 5
-            scoreBoard.textContent = "Your Score: " + score
-          }
-          wrongSentenceButton.style.display = 'none'
-          realSentenceButton.style.display = 'none'
-          truetab.removeEventListener('click', requestCorrectnessForTrueTab);
-          falsetab.removeEventListener('click', requestCorrectnessForFalseTab);
+        };
+        request.onerror = function() {
+          // There was a connection error of some sort
+        };
+        request.send();
+      }
+      addEventListener('DOMContentLoaded', requestSentence())
+      el.addEventListener('click', requestSentence)
+      var requestCorrectnessForTrueTab = function(event) {
+        var scoreBoard = document.getElementById('game-score')
+        if (isRealSentence == true){
+          score += 100
+          scoreBoard.textContent = "Your Score: " + score
+          corrected ++;
         }
-
-        var requestCorrectnessForFalseTab = function() {
-          var correctnessCheck = document.getElementById('correctness-check')
-          var wrongSentenceButton = document.getElementById('source-field-false')
-          var realSentenceButton = document.getElementById('source-field-true')
-          var scoreBoard = document.getElementById('score-board')
-          if (isRealSentence == false){
-            correctnessCheck.style.display = 'block'
-            correctnessCheck.textContent = "correct!"
-            score += 10
-            scoreBoard.textContent = "Your Score: " + score
-          }
-          else{
-            correctnessCheck.style.display = 'block'
-            correctnessCheck.textContent = "wrong!"
-            score -= 5
-            scoreBoard.textContent = "Your Score: " + score
-          }
-          wrongSentenceButton.style.display = 'none'
-          realSentenceButton.style.display = 'none'
-          truetab.removeEventListener('click', requestCorrectnessForTrueTab);
-          falsetab.removeEventListener('click', requestCorrectnessForFalseTab);
+        else{
+          scoreBoard.textContent = "Your Score: " + score
+          notCorrected++;
         }
-
-        var truetab = document.getElementById('source-field-true')
-        var falsetab = document.getElementById('source-field-false')
-        truetab.addEventListener('click', requestCorrectnessForTrueTab);
-        falsetab.addEventListener('click', requestCorrectnessForFalseTab);
-
-        var showSummary = function(){
-          var summary = document.getElementById('quote-field')
-          summary.textContent = "Your score: " + score + '\r\n'
-          for (i = 0; i < list.length; i++) {
-            summary.textContent = summary.textContent + list[i] + '\r\n'
-          }
-          console.log(list)
-          var play_button = document.getElementById('play-button')
-          play_button.textContent = "Play Again!"
-          var finishTab = document.getElementById('finish-button')
-          finishTab.style.display = 'none'
-          var correctnessDiv = document.getElementById('correctness-section')
-          correctnessDiv.style.display = 'none'
-          score = 100
+        document.getElementById('loader').style.display = 'block'
+        requestSentence()
+      }
+      var requestCorrectnessForFalseTab = function() {
+        var scoreBoard = document.getElementById('game-score')
+        if (isRealSentence == false){
+          score += 100
+          scoreBoard.textContent = "Your Score: " + score
+          corrected ++;
         }
+        else{
+          scoreBoard.textContent = "Your Score: " + score
+          notCorrected++;
+        }
+        document.getElementById('loader').style.display = 'block'
+        requestSentence()
+      }
+      var showSummary = function(){
+        var summary = document.getElementById('quote-field')
+        summary.textContent = "Your answered: " + corrected + " right questions,"
+        var summary1 = document.getElementById('temp-field')
+        summary1.textContent = "And " + notCorrected + " wrong questions"
 
+        var play_button = document.getElementById('play-button')
+        play_button.style.display = 'inline-block'
+        play_button.textContent = "Play Again!"
         var finishTab = document.getElementById('finish-button')
-        finishTab.addEventListener('click', showSummary)
+        finishTab.style.display = 'none'
+        var correctnessDiv = document.getElementById('correctness-section')
+        correctnessDiv.style.display = 'none'
+        score = 0
+        corrected = 0
+        notCorrected = 0
+        document.getElementById('form-section').style.display = 'block'
+      }
+
+      var finishTab = document.getElementById('finish-button')
+      finishTab.addEventListener('click', showSummary)
       }
     }
   }
