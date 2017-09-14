@@ -26,9 +26,9 @@ class GroupGameChannel < ApplicationCable::Channel
     questions = game.questions
     first_player = game.players.order(:username).first
     puts '---' * 10
-    puts first_player
+    puts first_player.username
     puts player
-    if player == first_player && questions.any?
+    if player == first_player.username && questions.any?
       puts '*' * 500
       puts 'sending question'
       puts "current user #{player}"
