@@ -29,7 +29,7 @@ class Register extends Component {
   }
 
   _displayNewGame = () => {
-    if (this.props.displayNewGameButton) {
+    if (this.state.displayNewGameButton) {
       return (
         <button onClick={this._handleNewGameButtonClick} className='button'>New Game</button>
       )
@@ -45,7 +45,7 @@ class Register extends Component {
   }
 
   _displayJoinGame = () => {
-    if (this.props.displayJoinGameButton) {
+    if (this.state.displayJoinGameButton) {
       return (
         <button onClick={this._handleJoinGameButtonClick} className='button'>Join Game</button>
       )
