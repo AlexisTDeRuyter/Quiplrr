@@ -25,6 +25,7 @@ class Register extends Component {
           <JoinForm
             _updateHistory={this._updateHistory.bind(this)}
             _createSubscription={this.props._createSubscription}
+            _subscribeUser={this.props._subscribeUser}
           />
         </div>
       </div>

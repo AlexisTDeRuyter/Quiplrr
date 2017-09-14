@@ -1,18 +1,29 @@
 import React, { Component } from 'react'
 import {
-  BrowserRouter as Router,
+  Router,
   Route,
   Link
 } from 'react-router-dom'
 import Register from '../register/index'
 import Join from '../join/index'
+import GroupGame from '../group_game/index'
+import createHistory from 'history/createBrowserHistory'
+import Results from '../results/index'
 
 export default class GroupGameRoutes extends Component {
   constructor(props) {
     super(props)
+    this.history = createHistory()
     this.state = {
+      subscription: null,
       token: '',
-      players: []
+      players: [],
+      question: '',
+      is_real: '',
+      score: 0,
+      questionsRemaining: 11,
+      playerName: '',
+      rank: [],
     }
   }
   _createGame = (token, playerName) => {
@@ -20,38 +31,68 @@ export default class GroupGameRoutes extends Component {
       token,
       players: [playerName]
     })
-    console.log(this.state)
+  }
+
+  _subscribeUser = (token, players) => {
+    this.setState({
+      token,
+      players
+    })
   }
 
   _createSubscription = (token, playerName) => {
     let cable = ActionCable.createConsumer('ws://localhost:3000/websocket?username=' + playerName)
-    cable.subscriptions.create({
+    let subscription = cable.subscriptions.create({
       channel: 'GroupGameChannel',
       room: token
     }, {
       received: (data) => {
-        let state = {
-          token: data['token'],
-          players: data['players']
-        }
-        this.setState({
-          token: state.token,
-          players: state.players
+        if (data['token']) {
+          this.setState({
+            token: data['token'],
+            players: data['players']
           })
-        console.log('this objects state')
-        console.log(this.state)
+        } else if (data['start']) {
+          this.history.push('/quiplrr/group/group_game')
+        } else if (data['question']) {
+          this.setState({
+            question: data['question'],
+            is_real: data['is_real'],
+            questionsRemaining: (this.state.questionsRemaining - 1)
+          })
+          if (this.state.questionsRemaining === 0) {
+            subscription.send({
+              playerName: this.state.playerName,
+              results: this.state.score
+            })
+            this.history.push('/quiplrr/group/results')
+          }
+        } else if (data['rank']) {
+          this.setState({
+            rank: data['rank']
+          })
+        }
       }
     })
+    this.setState({ subscription, playerName })
+  }
+
+  _checkAnswer = (response) => {
+    if (this.state.is_real === response) {
+      this.setState({
+        score: (this.state.score + 100)
+      })
+    }
   }
 
   render(){
     return (
-      <Router>
+      <Router history={this.history}>
         <div>
           <ul>
             <li><Link to="/quiplrr/group/register">Register</Link></li>
             <li><Link to="/quiplrr/group/join">Join</Link></li>
-            <li><Link to="/group_game">Group Game</Link></li>
+            <li><Link to="/quiplrr/group/group_game">Group Game</Link></li>
           </ul>
 
           <hr/>
@@ -60,8 +101,24 @@ export default class GroupGameRoutes extends Component {
             render={()=><Register
               _createSubscription={this._createSubscription.bind(this)}
               _createGame={this._createGame.bind(this)}
+              _subscribeUser={this._subscribeUser.bind(this)}
               />}/>
-          <Route exact path="/quiplrr/group/join" component={Join}/>
+          <Route exact path="/quiplrr/group/join"
+            render={()=><Join
+              token = {this.state.token}
+              players = {this.state.players}
+              subscription = {this.state.subscription}
+              />}/>
+          <Route exact path='/quiplrr/group/group_game'
+            render={()=><GroupGame
+              score={this.state.score}
+              question={this.state.question}
+              _checkAnswer={this._checkAnswer.bind(this)}
+            />}/>
+          <Route exact path='/quiplrr/group/results'
+            render={()=><Results
+              rank={this.state.rank}
+              />}/>
         </div>
       </Router>
     )

@@ -1,11 +1,11 @@
 import React, { Component } from 'react'
 
-export default class Players extends Component {
-  render() {
-    return (
-      <div>
-        this is a playerrrrrrrrrrrrr
-      </div>
-    )
-  }
+const Players = ({username}) => {
+  return (
+    <div>
+      <h2> {username} </h2>
+    </div>
+  )
 }
+
+export default Players

@@ -30,6 +30,7 @@ export default class JoinForm extends Component {
     .then((response) => response.json())
     .then((responseJson) => {
       this.props._createSubscription(responseJson['token'], responseJson['player_name'])
+      this.props._subscribeUser(responseJson['token'], responseJson['players'])
       this.props._updateHistory()
     })
   }
