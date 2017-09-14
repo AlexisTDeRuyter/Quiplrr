@@ -22,6 +22,7 @@ class GroupGameChannel < ApplicationCable::Channel
 
   def send_questions
     game = GroupGame.find_by(token: params[:room])
+    return unless game
     questions = game.questions
     first_player = game.players.order(:username).first
     if player == first_player && questions.any?
