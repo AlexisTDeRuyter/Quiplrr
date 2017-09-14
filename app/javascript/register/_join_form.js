@@ -38,7 +38,7 @@ export default class JoinForm extends Component {
 
   render() {
     return (
-      <div>
+      <div className='input-fields'>
         <form onSubmit={this._handleButtonPress}>
           <input type='text' placeholder='Game Token' value={this.state.token} onChange={this._handleTokenChange} />
           <input type='text' placeholder='Player Name' value={this.state.username} onChange={this._handleUsernameChange} />

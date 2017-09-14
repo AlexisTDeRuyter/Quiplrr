@@ -8,7 +8,7 @@
   font-size: 18px;
 }
 #finish-button {
-  display: none;  
+  display: none;
 }
 .summary{
   white-space: pre;
@@ -34,7 +34,7 @@ h3 {
   font-size: 20px;
   font-family: 'Raleway';
 }
-h3:hover { 
+h3:hover {
     background-color: #6AD3E8;
 }
 
@@ -154,4 +154,26 @@ html, body {
   border: 1px solid #ccc;
   border-radius: 4px;
   box-sizing: border-box;
+}
+
+.input-fields {
+  margin: auto;
+  opacity: 0;
+  border: 1px solid lightgray;
+  border-radius: 5px;
+  background-color: white;
+  background-color:rgba(255, 255, 255, 0.6);
+  border-radius: 5px;
+  display: inline-block;
+  font-size: inherit;
+  font-weight: bold;
+  padding: 7px 18px;
+  text-align: center;
+  text-decoration: none;
+  color: #3fb3ca;
+  max-width: 495px;
+  width: 90%;
+  height: 80px;
+  font-family: "Raleway";
+  font-size: 16px;
 }
