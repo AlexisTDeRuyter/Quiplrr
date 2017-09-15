@@ -102,7 +102,7 @@ document.onreadystatechange = function () {
               document.getElementById('loader').style.display = 'none'
               correctnessDiv.style.display = 'block'
               play_button.style.display = 'none'
-              document.getElementById('form-section').style.display = 'none'
+              document.getElementById('game-form-section').style.display = 'none'
               correctnessCheck.style.display = 'none'
               finishTab.style.display = 'inline-block'
               truetab.addEventListener('click', requestCorrectnessForTrueTab);
@@ -169,7 +169,7 @@ document.onreadystatechange = function () {
           score = 0
           corrected = 0
           notCorrected = 0
-          document.getElementById('form-section').style.display = 'block'
+          document.getElementById('game-form-section').style.display = 'block'
         }
 
         var finishTab = document.getElementById('finish-button')
