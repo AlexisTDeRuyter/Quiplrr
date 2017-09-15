@@ -47,6 +47,11 @@
   margin-bottom: 6px;
 }
 
+.correctness-section-class{
+  padding-top: 50px;
+  margin-bottom: 6px;
+}
+
 #fixedposition{
   position: fixed;
   bottom: 100px;
@@ -68,7 +73,10 @@
   display: inline-block;
   font-size : 20px;
 }
-
+.group-game-container {
+  max-width: 540px;
+  margin: auto;
+}
 
 #finish-button {
   position: relative;
