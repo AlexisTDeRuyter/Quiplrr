@@ -61,8 +61,8 @@ document.onreadystatechange = function () {
         notCorrected = 0
 
         var loadingButtonPrevent = function(){
-          let elementTrue = document.getElementById("source-field-true")
-          let elementFalse = document.getElementById("source-field-false")
+          var elementTrue = document.getElementById("source-field-true")
+          var elementFalse = document.getElementById("source-field-false")
           elementTrue.disabled = true;
           elementFalse.disabled = true;
           document.getElementById('quote-field').textContent = null
