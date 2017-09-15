@@ -27,6 +27,7 @@ export default class GroupGameRoutes extends Component {
       showAnswerButtons: true,
     }
   }
+
   _createGame = (token, playerName) => {
     this.setState({
       token,
@@ -99,24 +100,28 @@ export default class GroupGameRoutes extends Component {
               _createSubscription={this._createSubscription.bind(this)}
               _createGame={this._createGame.bind(this)}
               _subscribeUser={this._subscribeUser.bind(this)}
-              />}/>
+              />}
+            />
           <Route exact path="/quiplrr/group/join"
             render={()=><Join
               token = {this.state.token}
               players = {this.state.players}
               subscription = {this.state.subscription}
-              />}/>
+              />}
+            />
           <Route exact path='/quiplrr/group/group_game'
             render={()=><GroupGame
               score={this.state.score}
               question={this.state.question}
               _checkAnswer={this._checkAnswer.bind(this)}
               showAnswerButtons={this.state.showAnswerButtons}
-            />}/>
+            />}
+          />
           <Route exact path='/quiplrr/group/results'
             render={()=><Results
               rank={this.state.rank}
-              />}/>
+            />}
+          />
         </div>
       </Router>
     )
