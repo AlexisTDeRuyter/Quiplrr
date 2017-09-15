@@ -7,9 +7,9 @@ export default class GroupGame extends Component {
   _displayAnswerButtons() {
     if (this.props.showAnswerButtons) {
       return (
-        <div>
-          <button onClick={this._handleClick} value='true' className='button'>Trump</button>
-          <button onClick={this._handleClick} value='false' className='button'>Trumplrr</button>
+        <div id='correctness-section'>
+          <button id='source-field-true' onClick={this._handleClick} value='true' className='button'>Trump</button>
+          <button id='source-field-false' onClick={this._handleClick} value='false' className='button'>Trumplrr</button>
         </div>
       )
     }
@@ -20,15 +20,19 @@ export default class GroupGame extends Component {
     return (
       <div>
         <div>
-          <h1>{this.props.question}</h1>
+          <article className='gameindex'>
+            <blockquote className='example-right'>
+              <p>{this.props.question}</p>
+            </blockquote>
+          </article>
         </div>
-        <div>
+        <div id='fixedposition'>
           {this._displayAnswerButtons()}
+          <div id='game-handle-hook'>
+            <p id='game-score'>Current Score: {this.props.score}</p>
+          </div>
         </div>
-        <div>
-          <h4>Current Score: {this.props.score}</h4>
-        </div>
-    </div>
+      </div>
     )
   }
 }
