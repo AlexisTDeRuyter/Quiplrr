@@ -49,7 +49,6 @@ export default class GroupGameRoutes extends Component {
       room: token
     }, {
       received: (data) => {
-        console.log('in received', data)
         if (data['token']) {
           this.setState({
             token: data['token'],
@@ -75,7 +74,6 @@ export default class GroupGameRoutes extends Component {
             rank: data['rank']
           })
           this.history.push('/quiplrr/group/results')
-          console.log('in else if', this.state.rank)
         }
       }
     })
@@ -94,7 +92,6 @@ export default class GroupGameRoutes extends Component {
   }
 
   render(){
-    console.log('in render', this.state.rank)
     return (
       <Router history={this.history}>
         <div>
