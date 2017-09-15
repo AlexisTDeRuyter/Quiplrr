@@ -17,7 +17,7 @@ export default class GroupGame extends Component {
   }
 
   _displayLoading = () => {
-    if (this.props.question) {
+    if (this.props.question.length == 0) {
       return (
         <div id='group-loader'></div>
       )
