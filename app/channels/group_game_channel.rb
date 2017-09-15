@@ -25,7 +25,10 @@ class GroupGameChannel < ApplicationCable::Channel
     return unless game
     questions = game.questions
     first_player = game.players.order(:username).first
-    if player == first_player.username && questions.any?
+    if player == first_player.username && questions.count == 1
+      ActionCable.server.broadcast("group_game_#{params[:room]}", {finished: true})
+      questions.first.destroy
+    elsif player == first_player.username && questions.any?
       @question = questions.first
       ActionCable.server.broadcast("group_game_#{params[:room]}", {question: @question.quote, is_real: @question.is_real.to_s})
       @question.destroy
