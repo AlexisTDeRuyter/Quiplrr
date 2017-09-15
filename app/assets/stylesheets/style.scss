@@ -1,3 +1,12 @@
+.gameindex{
+  width: 540px;
+}
+
+#game-form-section{
+  margin-top: 100px;
+}
+
+
 #game-handle-hook {
   margin: auto;
   opacity: 0;
@@ -13,8 +22,7 @@
   text-align: center;
   text-decoration: none;
   color: #3fb3ca;
-  max-width: 495px;
-  width: 90%;
+  width: 500px;
   height: 66px;
   font-family: "Raleway";
   font-size: 16px;
@@ -23,7 +31,7 @@
 #game-handle-field {
   background: url(asset-path('at_sign.png')) no-repeat scroll 7px 7px;
   width: 175px;
-  padding: 6px 25px;
+  padding: 6px;
   display: inline-block;
   border: 1px solid #ccc;
   border-radius: 4px;
@@ -36,14 +44,22 @@
 
 #correctness-section{
   padding-top: 50px;
+  margin-bottom: 6px;
+}
+
+#fixedposition{
+  position: fixed;
+  bottom: 100px;
+  margin-right: auto;
+  margin-left: auto;
 }
 
 #quote-section-game{
-  height:300px;
+  height:100px;
 }
 
 #source-field-true, #source-field-false{
-  max-width:260px;
+  max-width:258px;
   margin:5px;
 }
 #game-score{

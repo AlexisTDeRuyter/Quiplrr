@@ -1,15 +1,11 @@
-article.gameindex
-  div#quote-section
-    blockquote.example-right
-      p#quote-field Quiplrr Game Instruction : 
-      button id="finish-button" Finish
-      / move the location of the button
-    div#correctness-section  
-      h3.example-true-source#source-field-true
-      h3.example-false-source#source-field-false
-      h3.correctness-check#correctness-check
-      h2.score-board#score-board
-
+div#game
+  article.gameindex
+    div#quote-field-game
+      blockquote.example-right
+        p#quote-field
+        p#temp-field
+        div#loader
+      div#correctness-check
 
   div#form-section
     form
@@ -18,6 +14,10 @@ article.gameindex
           option value='shakesplrr' Shakesplrr
           option value='trumplrr' Trumplrr
       button.button.form-style id="play-button" class="button question-button orange-button" type='button' Play
-    div#share-box
-      span#share-fb.share
-      span#share-tw.share
+  div#fixedposition
+    div#correctness-section
+      button#source-field-true class="button question-button orange-button"
+      button#source-field-false class="button question-button orange-button"
+    div#game-handle-hook style="display: inline-block; opacity: 1.0325;"
+      p#game-score
+      button class="button question-button orange-button" id="finish-button" finish
