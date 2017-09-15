@@ -6,7 +6,7 @@ class Results extends Component {
   render() {
     return (
       <div>
-        <table class="table-minimal">
+        <table className="table-minimal">
           <thead>
             <tr>
               <th>{this.props.rank[0][0]}</th>
