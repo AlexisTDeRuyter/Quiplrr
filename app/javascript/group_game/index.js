@@ -29,10 +29,10 @@ export default class GroupGame extends Component {
         <div id='fixedposition'>
           {this._displayAnswerButtons()}
           <div id='game-handle-hook'>
-            <p id='game-score'>Current Score: {this.props.score}<p>
+            <p id='game-score'>Current Score: {this.props.score}</p>
           </div>
         </div>
-    </div>
+      </div>
     )
   }
 }
