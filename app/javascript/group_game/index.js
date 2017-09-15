@@ -4,7 +4,7 @@ export default class GroupGame extends Component {
   _handleClick = (event) => {
     this.props._checkAnswer(event.target.value)
   }
-  _displayAnswerButtons() {
+  _displayAnswerButtons = () => {
     if (this.props.showAnswerButtons) {
       return (
         <div id='correctness-section'>
@@ -14,6 +14,14 @@ export default class GroupGame extends Component {
       )
     }
     return false
+  }
+
+  _displayLoading = () => {
+    if (this.props.question.length == 0) {
+      return (
+        <div id='group-loader'></div>
+      )
+    }
   }
 
   render() {
@@ -26,6 +34,7 @@ export default class GroupGame extends Component {
             </blockquote>
           </article>
         </div>
+        {this._displayLoading()}
         <div id='fixedposition'>
           {this._displayAnswerButtons()}
           <div className='group-score'>
