@@ -21,7 +21,7 @@ export default class GroupGameRoutes extends Component {
       question: '',
       is_real: '',
       score: 0,
-      questionsRemaining: 1,
+      questionsRemaining: 2,
       playerName: '',
       rank: [],
       showAnswerButtons: true,
