@@ -5,32 +5,25 @@ class Results extends Component {
 
   render() {
     return (
-      <div class="leaderboard">
-        <h1>
-          Highest Scores
-        </h1>
-        <ol>
-          <li>
-            <mark>{this.props.rank.length > 2 ? this.props.rank[2][0] : null}</mark>
-            <small>{this.props.rank.length > 2 ? this.props.rank[2][1] : null}</small>
-          </li>
-          <li>
-            <mark>{this.props.rank[0][0]}</mark>
-            <small>{this.props.rank[0][1]}</small>
-          </li>
-          <li>
-            <mark>{this.props.rank.length > 1 ? this.props.rank[1][0] : null}</mark>
-            <small>{this.props.rank.length > 1 ? this.props.rank[1][1] : null}</small>
-          </li>
-          <li>
-            <mark>Trevor McCormick</mark>
-            <small>245</small>
-          </li>
-          <li>
-            <mark>Andrew Fox</mark>
-            <small>203</small>
-          </li>
-        </ol>
+      <div>
+        <table class="table-minimal">
+          <thead>
+            <tr>
+              <th>{this.props.rank[0][0]}</th>
+              <th>{this.props.rank[0][1]}</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>{this.props.rank.length > 1 ? this.props.rank[1][0] : null}</td>
+              <td>{this.props.rank.length > 1 ? this.props.rank[1][1] : null}</td>
+            </tr>
+            <tr>
+              <td>{this.props.rank.length > 2 ? this.props.rank[2][0] : null}</td>
+              <td>{this.props.rank.length > 2 ? this.props.rank[2][1] : null}</td>
+            </tr>
+          </tbody>
+        </table>
       </div>
     )
   }
