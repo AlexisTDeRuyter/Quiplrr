@@ -7,7 +7,7 @@ class GroupGame < ApplicationRecord
 
   def generate_questions(source)
     game_service = GameService.new
-    3.times do
+    4.times do
       Question.create(
         quote: game_service.generate_game_sentence(source),
         is_real: game_service.is_real_sentence,
