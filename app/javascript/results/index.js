@@ -18,16 +18,16 @@ class Results extends Component {
     return (
       <div className='competition-podium well'>
         <div className='podium-block bronze'>
-          <div className='name'>Alexis </div>
-          <div className='podium'><span>3rd</span></div>
+          <div className='name'>{this.props.rank.length > 2 ? this.props.rank[2][0] : null}</div>
+          <div className='podium'><span>{this.props.rank.length > 2 ? this.props.rank[2][1] : null}</span></div>
         </div>
         <div className='podium-block gold'>
-          <div className='name'>Ryan</div>
-          <div className='podium'><span>1st</span></div>
+          <div className='name'>{this.props.rank[0][0]}</div>
+          <div className='podium'><span>{this.props.rank[0][1]}</span></div>
         </div>
         <div className='podium-block silver'>
-          <div className='name'>Emmet</div>
-          <div className='podium'><span>2nd</span></div>
+          <div className='name'>{this.props.rank.length > 1 ? this.props.rank[1][0] : null}</div>
+          <div className='podium'><span>{this.props.rank.length > 1 ? this.props.rank[1][1] : null}</span></div>
         </div>
       </div>
     )
