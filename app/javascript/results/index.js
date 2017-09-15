@@ -4,9 +4,6 @@ import { withRouter } from 'react-router-dom'
 class Results extends Component {
 
   render() {
-    console.log('***************************************')
-    console.log(this.props)
-    console.log('***************************************')
     return (
       <div className='competition-podium well'>
         <div className='podium-block bronze'>
