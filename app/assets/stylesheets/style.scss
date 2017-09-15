@@ -321,3 +321,24 @@ html, body {
   -moz-box-shadow: 7px 10px 27px -8px rgba(0,0,0,0.75);
   box-shadow: 7px 10px 27px -8px rgba(0,0,0,0.75);
 }
+
+.group-score {
+  margin: auto;
+  opacity: 400;
+  border: 1px solid lightgray;
+  border-radius: 5px;
+  background-color: white;
+  background-color: rgba(255, 255, 255, 0.6);
+  border-radius: 5px;
+  display: inline-block;
+  font-size: inherit;
+  font-weight: bold;
+  padding: 7px 18px;
+  text-align: center;
+  text-decoration: none;
+  color: #3fb3ca;
+  width: 500px;
+  height: 66px;
+  font-family: "Raleway";
+  font-size: 16px;
+}

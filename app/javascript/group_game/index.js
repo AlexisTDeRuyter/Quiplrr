@@ -28,7 +28,7 @@ export default class GroupGame extends Component {
         </div>
         <div id='fixedposition'>
           {this._displayAnswerButtons()}
-          <div id='game-handle-hook'>
+          <div className='group-score'>
             <p id='game-score'>Current Score: {this.props.score}</p>
           </div>
         </div>
