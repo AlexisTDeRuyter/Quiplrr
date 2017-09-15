@@ -21,7 +21,6 @@ export default class GroupGameRoutes extends Component {
       question: '',
       is_real: '',
       score: 0,
-      questionsRemaining: 2,
       playerName: '',
       rank: [],
       showAnswerButtons: true,
@@ -61,20 +60,18 @@ export default class GroupGameRoutes extends Component {
             showAnswerButtons: true,
             question: data['question'],
             is_real: data['is_real'],
-            questionsRemaining: (this.state.questionsRemaining - 1)
           })
-          if (this.state.questionsRemaining === 0) {
-            subscription.send({
-              playerName: this.state.playerName,
-              results: this.state.score
-            })
-          }
         } else if (data['rank']) {
           this.setState({
             rank: data['rank']
           })
           this.history.push('/quiplrr/group/results')
-        }
+        } else if (data['finished']) {
+          subscription.send({
+            playerName: this.state.playerName,
+            results: this.state.score
+          })
+      }
       }
     })
     this.setState({ subscription, playerName })
