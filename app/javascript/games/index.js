@@ -121,7 +121,11 @@ export default class GroupGameRoutes extends Component {
             />}
           />
           <Route exact path='/quiplrr/group/results'
-            render={()=> <Results rank={this.state.rank} />}
+            render={()=><Results
+              rank={this.state.rank}
+              score={this.state.score}
+              blah={"blah"}
+            />}
           />
         </div>
       </Router>

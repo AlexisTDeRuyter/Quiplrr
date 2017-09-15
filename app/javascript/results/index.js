@@ -2,20 +2,10 @@ import React, { Component } from 'react'
 import { withRouter } from 'react-router-dom'
 
 class Results extends Component {
-  _listRankings = () => {
-    return this.props.rank.map((player) => {
-      return (
-        <tr>
-          <td>{player[0]}</td>
-          <td>{player[1]}</td>
-        </tr>
-      )
-    })
-  }
 
   render() {
     console.log('***************************************')
-    console.log(this.props.rank)
+    console.log(this.props)
     console.log('***************************************')
     return (
       <div className='competition-podium well'>
