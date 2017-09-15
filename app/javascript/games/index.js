@@ -69,12 +69,12 @@ export default class GroupGameRoutes extends Component {
               playerName: this.state.playerName,
               results: this.state.score
             })
-            this.history.push('/quiplrr/group/results')
           }
         } else if (data['rank']) {
           this.setState({
             rank: data['rank']
           })
+          this.history.push('/quiplrr/group/results')
           console.log('in else if', this.state.rank)
         }
       }
