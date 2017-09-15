@@ -1,5 +1,5 @@
 class GroupGameChannel < ApplicationCable::Channel
-  periodically :send_questions, every: 5.seconds
+  periodically :send_questions, every: 15.seconds
 
   def subscribed
     stream_from "group_game_#{params[:room]}"
