@@ -29,7 +29,7 @@ export default class GroupGame extends Component {
       <div className='group-game-container'>
         <article className='gameindex'>
           <blockquote className='example-right'>
-            <p>{this.props.question} CHECK IT</p>
+            <p>{this.props.question}</p>
           </blockquote>
         </article>
       {this._displayLoading()}
