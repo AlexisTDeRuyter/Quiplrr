@@ -14,7 +14,9 @@ class Results extends Component {
   }
 
   render() {
+    console.log('***************************************')
     console.log(this.props.rank)
+    console.log('***************************************')
     return (
       <div className='competition-podium well'>
         <div className='podium-block bronze'>
